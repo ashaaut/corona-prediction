@@ -1,50 +1,57 @@
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const port = process.env.PORT || 3000;
-
-module.exports = {
-  mode: 'development',  
-  entry: './src/index.js',
-  output: {
-    filename: 'bundle.[hash].js'
-  },
-  devtool: 'inline-source-map',
-  module: {
-    rules: [
-      {
-        test: /\.(js)$/,
-        exclude: /node_modules/,
-        use: ['babel-loader']
-      },
-      {
-        test: /\.(css)$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              sourceMap: true
+const config = {
+    entry: [
+        'react-hot-loader/patch',
+        './src/index.js'
+    ],
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                use: 'babel-loader',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            },
+            {
+                test: /\.png$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            mimetype: 'image/png'
+                        }
+                    }
+                ]
             }
-          }
         ]
-      }
-    ]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'public/index.html',
-      favicon: 'public/favicon.ico'
-    })
-  ],
-  devServer: {
-    host: 'localhost',
-    port: port,
-    historyApiFallback: true,
-    open: true
-  }
+    },
+    resolve: {
+        extensions: [
+            '.js',
+            '.jsx'
+        ],
+        alias: {
+            'react-dom': '@hot-loader/react-dom'
+        }
+    },
+    devServer: {
+        contentBase: './public'
+    },
+    plugins: []
 };
 
+module.exports = config;

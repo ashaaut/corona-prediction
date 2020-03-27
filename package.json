@@ -1,37 +1,37 @@
 {
-  "name": "Corona",
+  "name": "study_corona",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "license": "MIT",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "scripts": {
-    "start": "webpack-dev-server"
+    "clean": "rm dist/bundle.js",
+    "build-dev": "webpack -d --mode development",
+    "build-prod": "webpack -p --mode production",
+    "start": "webpack-dev-server --hot --mode development"
   },
   "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "prop-types": "^0.4.0",
-    "react-router-dom": "^4.2.2",
-    "semantic-ui-react": "^0.77.1"
-  },
-   "engines": {
-    "node": ">=10.18.1",
-    "npm": ">=6.13.4"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-graph-vis": "^1.0.5",
+    "react-hot-loader": "^4.12.20"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.0.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.1",
-    "css-loader": "^0.28.11",
-    "html-webpack-plugin": "^3.0.4",
-    "node-sass": "^4.13.1",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "babel-loader": "^8.1.0",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@hot-loader/react-dom": "^16.13.0+4.12.20",
+    "css-loader": "^3.4.2",
     "sass-loader": "^8.0.2",
-    "style-loader": "^0.19.1",
-    "webpack": "^4.0.0",
-    "webpack-cli": "^2.0.14",
-    "webpack-dev-server": "^3.0.0"
+    "node-sass": "^4.13.1",
+    "style-loader": "^1.1.3",
+    "@babel/preset-react": "^7.9.4",
+    "webpack-dev-server": "^3.10.3",
+    "url-loader": "^4.0.0",
+    "webpack-bundle-analyzer": "^3.6.1"
   }
 }
-
