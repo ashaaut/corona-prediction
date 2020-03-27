@@ -1,5 +1,5 @@
 {
-  "name": "study_corona",
+  "name": "corona-prediction",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,6 +17,10 @@
     "react-dom": "^16.13.1",
     "react-graph-vis": "^1.0.5",
     "react-hot-loader": "^4.12.20"
+  },
+  "engines": {
+    "node": ">=13.11.0",
+    "npm": ">=6.13.7"
   },
   "devDependencies": {
     "webpack": "^4.42.1",
