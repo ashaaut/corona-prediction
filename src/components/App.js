@@ -1,13 +1,22 @@
 
 import React from "react";
 import { hot } from 'react-hot-loader/root';
-import CoronaDataTable from "./coronaSpreadMap/coronaDataTable";
+import CoronaMap from "./coronaSpreadMap/coronaMap"
+import data from "./../data/data.json"
 
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      data:data.data
+    }
+  } 
+
   render() {
     const { name } = this.props;
     return <div>
-        <CoronaDataTable/>
+        <CoronaMap data={this.state.data}/>
+        
     </div>;
   }
 }

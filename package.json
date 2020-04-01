@@ -13,10 +13,12 @@
     "start": "webpack-dev-server --hot --mode development"
   },
   "dependencies": {
+    "plotly.js": "^1.52.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-graph-vis": "^1.0.5",
-    "react-hot-loader": "^4.12.20"
+    "react-hot-loader": "^4.12.20",
+    "react-plotly.js": "^2.4.0"
   },
   "engines": {
     "node": ">=13.11.0",
