@@ -8,7 +8,7 @@ export default class CoronaDataTable extends PureComponent {
         super(props);
 
         this.state = {
-            data: data.data
+            
         };
     }
 
@@ -44,11 +44,12 @@ export default class CoronaDataTable extends PureComponent {
     }
 
     render() {
-        let rawPatientData = this.state.data['rawPatientData'];
+        const {data}=this.props
+        const rawPatientData=data["rawPatientData"]
         return <div className={"raw-patient-data"}>
             {rawPatientData ?
               rawPatientData.map(d => {
-                  return this.createRawPatientDataRow(d)
+                  return d
               }) : "Data not available"}
         </div>
     }

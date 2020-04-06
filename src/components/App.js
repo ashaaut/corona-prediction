@@ -2,6 +2,7 @@
 import React from "react";
 import { hot } from 'react-hot-loader/root';
 import CoronaMap from "./coronaSpreadMap/coronaMap"
+import CoronaDataTable from "./coronaSpreadMap/coronaDataTable"
 import data from "./../data/data.json"
 
 class App extends React.Component {
@@ -15,8 +16,8 @@ class App extends React.Component {
   render() {
     const { name } = this.props;
     return <div>
-        <CoronaMap data={this.state.data}/>
-        
+      <CoronaMap data={this.state.data}/>
+    
     </div>;
   }
 }
