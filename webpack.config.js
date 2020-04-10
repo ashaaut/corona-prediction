@@ -27,6 +27,10 @@ const config = {
                 ]
             },
             {
+                test: /\.css$/,
+                loaders: ["style-loader", "css-loader"]
+              },
+            {
                 test: /\.png$/,
                 use: [
                     {

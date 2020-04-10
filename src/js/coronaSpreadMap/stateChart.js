@@ -14,13 +14,10 @@ export default class StateChart extends PureComponent {
         let cityNames=Object.keys(data["stateData"])
         let values=cityNames.map(cityName=>data["stateData"][cityName])
         return(
-            
-        <div className={"statedata"}>
-            
+        <div className={"plot-conatainer"}>
             <Plot
               data={[{type: 'bar', x: cityNames, y:values},
               ]} layout={{width: "100%", height: "100%", title: data["stateName"]}}/>
-
         </div>  
         
         )
