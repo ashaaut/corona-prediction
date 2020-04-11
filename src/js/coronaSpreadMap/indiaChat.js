@@ -1,16 +1,10 @@
 import Plot from 'react-plotly.js'
 import React, { PureComponent } from "react";
-import StateChart from './stateChart'
-
 
 export default class indiaChart extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = {
-
-
-
-        };
+        this.state = {};
     }
     filterData(rawPatientData, key, value) {
         return rawPatientData.filter(data => data[key] === value)

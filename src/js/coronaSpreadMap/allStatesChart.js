@@ -1,5 +1,5 @@
 import Plot from 'react-plotly.js'
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import StateChart from './stateChart'
 
 
@@ -7,7 +7,7 @@ export default class AllStateCharts extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            
+
         };
     }
     filterData(rawPatientData, key, value) {
@@ -43,28 +43,25 @@ export default class AllStateCharts extends PureComponent {
         }
         return newobj
     }
+    render() {
+        const { data } = this.props;
 
-
-
-    render(){
-        const {data} = this.props;
-
-        const rawPatientData=data["rawPatientData"]
+        const rawPatientData = data["rawPatientData"]
         let repeatedStateNames = this.getAllValuesForKey(rawPatientData, "state")
         let stateNames = this.removeDuplicates(repeatedStateNames)
         let uniqueStateAllData = this.getAllData(rawPatientData, stateNames)
         let r = this.getAllCountOccurancesStateWise(uniqueStateAllData, "city")
         let allStatedata = this.assignKey(r, stateNames)
         let allStateNames = Object.keys(allStatedata)
-  
-        return(
-            
+
+        return (
+
             <div className={"specific-chart-container"}>
-            <div className={"chart-title"}> State Charts</div>
+                <div className={"chart-title"}> State Charts</div>
                 {allStateNames.map(stateName => <div className={"plot-container"}><StateChart data={{ stateName: stateName, stateData: allStatedata[stateName] }} /></div>)}
-        </div>  
-        
+            </div>
+
         )
-        
-    } 
+
+    }
 } 
