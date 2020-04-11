@@ -61,8 +61,8 @@ export default class AllStateCharts extends PureComponent {
           <div className={"specific-chart-container"}>
               <div className={"main-title"}> State Charts</div>
               <div className={"multiple-chart-sideway"}>
-                  {allStateNames.map(stateName => <div className={"plot-container"}><StateChart
-                    data={{stateName: stateName, stateData: allStatedata[stateName]}}/></div>)}
+                  {allStateNames.map(stateName => <StateChart
+                    data={{stateName: stateName, stateData: allStatedata[stateName]}}/>)}
               </div>
           </div>
 

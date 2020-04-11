@@ -25,24 +25,26 @@ export default class AgeChart extends PureComponent {
         ageData["ageBetween25To50"] = this.getAgeBetween(rawPatientData, [25, 50], "ageEstimate").length;
         ageData["ageBetween50To75"] = this.getAgeBetween(rawPatientData, [50, 75], "ageEstimate").length;
         ageData["ageBetween75To110"] = this.getAgeBetween(rawPatientData, [75, 110], "ageEstimate").length;
-        ageData["ageUnknown"] = this.filterData(rawPatientData, "ageEstimate", "").length;
+        let ageUnknown = this.filterData(rawPatientData, "ageEstimate", "").length;
         return (
           <div className={"specific-chart-container"}>
               <div className={"chart-title"}> Age Distribution</div>
               <div className={"multiple-chart-sideway"}>
-                  <div className={"plot-container"}>
+                  <div className={"app-plot-container"}>
                       <Plot
                         data={[{type: 'bar', x: Object.keys(ageData), y: Object.values(ageData)},
                         ]} layout={{width: "100%", height: "100%", title: "Age Distribution Bar"}}/>
-
+                      Awaiting details for {ageUnknown} patients
                   </div>
-                  <div className={"plot-container"}>
+                  <div className={"app-plot-container"}>
                       <Plot data={[{
                           type: 'pie', labels: Object.keys(ageData),
                           values: Object.values(ageData)
                       },
                       ]} layout={{width: "100%", height: "100%", title: "Age Distribution Pie"}}/>
+                      Awaiting details for {ageUnknown} patients
                   </div>
+
               </div>
           </div>
 

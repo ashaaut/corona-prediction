@@ -41,7 +41,7 @@ export default class IndiaChart extends PureComponent {
           <div className={"specific-chart-container"}>
               <div className={"main-title"}> India overview</div>
               <div className={"chart-title"}> Total:{total}</div>
-              <div className="plot-container india-chart">
+              <div className="app-plot-container india-chart">
                   <Plot
                     data={[{type: 'bar', x: stateNames, y: values},
                     ]} layout={{title: "INDIA"}} style={{width: "100%", height: "100%"}}/>
