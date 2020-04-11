@@ -1,15 +1,14 @@
 import Plot from 'react-plotly.js'
-import React, { PureComponent } from "react";
+import React, {PureComponent} from "react";
 import StateChart from './stateChart'
 
 
 export default class AllStateCharts extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = {
-
-        };
+        this.state = {};
     }
+
     filterData(rawPatientData, key, value) {
         return rawPatientData.filter(data => data[key] === value)
     }
@@ -36,6 +35,7 @@ export default class AllStateCharts extends PureComponent {
     getAllCountOccurancesStateWise(stateData, key) {
         return stateData.map(e => this.getAllCountOccurances(e, key))
     }
+
     assignKey(stateData, stateNames) {
         let newobj = {}
         for (let i = 0; i < stateData.length; i++) {
@@ -43,24 +43,28 @@ export default class AllStateCharts extends PureComponent {
         }
         return newobj
     }
-    render() {
-        const { data } = this.props;
 
-        const rawPatientData = data["rawPatientData"]
-        let repeatedStateNames = this.getAllValuesForKey(rawPatientData, "state")
-        let stateNames = this.removeDuplicates(repeatedStateNames)
-        let uniqueStateAllData = this.getAllData(rawPatientData, stateNames)
-        let r = this.getAllCountOccurancesStateWise(uniqueStateAllData, "district")
-        let allStatedata = this.assignKey(r, stateNames)
-        let allStateNames = Object.keys(allStatedata)
-        console.log(allStatedata)
+    render() {
+        const {data} = this.props;
+
+        const rawPatientData = data["rawPatientData"];
+        let repeatedStateNames = this.getAllValuesForKey(rawPatientData, "state");
+        let stateNames = this.removeDuplicates(repeatedStateNames);
+        let uniqueStateAllData = this.getAllData(rawPatientData, stateNames);
+        let r = this.getAllCountOccurancesStateWise(uniqueStateAllData, "district");
+        let allStatedata = this.assignKey(r, stateNames);
+        let allStateNames = Object.keys(allStatedata);
+        console.log(allStatedata);
 
         return (
 
-            <div className={"specific-chart-container"}>
-                <div className={"chart-title"}> State Charts</div>
-                {allStateNames.map(stateName => <div className={"plot-container"}><StateChart data={{ stateName: stateName, stateData: allStatedata[stateName] }} /></div>)}
-            </div>
+          <div className={"specific-chart-container"}>
+              <div className={"main-title"}> State Charts</div>
+              <div className={"multiple-chart-sideway"}>
+                  {allStateNames.map(stateName => <div className={"plot-container"}><StateChart
+                    data={{stateName: stateName, stateData: allStatedata[stateName]}}/></div>)}
+              </div>
+          </div>
 
         )
 

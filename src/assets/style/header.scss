@@ -1,88 +1,48 @@
 .header {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    justify-self: center;
-    justify-items: center;
-    padding: 0% 1% 0% 1%;
-    position: fixed;
-    top: 0;
-    background: white;
-    z-index: 100;
-  }
-  
-.header-logo {
-    height: 100%;
-    display: flex;
-    width: 20%;
+  height: 60px;
+  display: flex;
+  z-index: 100;
+  justify-content: space-between;
 }
-.logo {
-    width: 70px;
-    height: 60px;
-}
+
+
 .web-title {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    font-size: 25px;
-    flex-wrap: nowrap;
-    min-width: 200px;
-  }
-  
-.button-container{
-  
   display: flex;
-  width: 100%;
+  align-items: center;
+  font-size: 25px;
+  min-width: 200px;
+  padding: 10px;
+}
+
+.data-loading{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 30px;
+}
+.button-container {
+  display: flex;
+  width: 350px;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  align-self: center;
   height: 100%;
-}
-.buttons{
-    height: 70%;
-    display: flex;  
-    width: 50%;
-    align-items: center;
+  padding-right: 15px;
 
-   
-}
-.button{
-  margin-top: 2px;
-  display: flex;
-  text-decoration: none;
-  color: black;
-  background-color: white;
-  border-radius: 8px;
-  transition-duration: 0.4s;
-  margin: 4px 2px;
- 
-}
-.button:hover {
-  background-color: #555555;
-  color: white;
-}
-.button:focus {
-  background-color: #555555;
-  color: white;
-}
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
- }
-.dropdown-content a {
-  color: black;
-  padding: 12px 14px;
-  text-decoration: none;
-  display: block;
-}
-.dropdown-content a:hover {
-  background-color: #555555;
-  color: white;
-}
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+  button {
+    border: none;
+    height: 80%;
+    outline: 0;
+    min-width: 100px;
+  }
 
+  button:hover {
+    box-shadow: 0 .2rem .35rem rgba(0, 0, 0, .1)
+  }
+
+  .selected {
+    box-shadow: 0 0.2rem 0.35rem rgba(0, 0, 0, 0.3);
+  }
+}

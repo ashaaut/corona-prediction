@@ -1,24 +1,53 @@
 
-.plot-container{
-   box-shadow: 5px 5px 5px 5px darkgrey;
-    margin: 20px;
+.plot-container {
+  box-shadow: 5px 5px 5px 5px darkgrey;
+  margin: 20px;
 }
-.main-button-container{
+
+.main-button-container {
   margin-top: 60px;
 }
-.chart-container{
+
+.chart-container {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  min-height: 80vh;
 }
-.state-plots{
+
+.state-plots {
   display: flex;
   flex-wrap: wrap;
 }
 
-.chart-title{
+.chart-title {
   display: flex;
   justify-content: center;
   font-weight: bold;
-  margin-top: 80px;
+  margin: 10px;
+}
+.main-title{
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  margin: 10px;
+  font-size: 20px;
+}
+.specific-chart-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.multiple-chart-sideway {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.india-chart{
+  width: 80%;
+  display: flex;
+  justify-content: center;
 }

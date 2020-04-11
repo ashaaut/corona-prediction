@@ -1,59 +1,57 @@
 import React from "react";
-import { hot } from 'react-hot-loader/root';
-import GenderChart from "../coronaSpreadMap/gender"
+import {hot} from 'react-hot-loader/root';
 import data from "./../../data/data.json"
-import Age from '../coronaSpreadMap/ageChart'
 import AllStates from '../coronaSpreadMap/allStatesChart'
 import IndiaChart from '../coronaSpreadMap/indiaChat'
 import Header from './header'
 import Footer from './footer'
+import GeneralDist from "../coronaSpreadMap/genearlDist";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: undefined,
-      selectedChart: "india"
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: undefined,
+            selectedChart: "india"
+        }
+        this.changeChart = this.changeChart.bind(this)
     }
-    this.changeChart = this.changeChart.bind(this)
-  }
+
     componentWillMount() {
-      fetch('https://api.rootnet.in/covid19-in/unofficial/covid19india.org', {
-          cors: 'no-cors',
-          method: 'GET',
-          redirect: 'follow',
-      })
-        .then(resp => resp.json())
-        .then(res => {
-            this.setState({data: res.data})
+        fetch('https://api.rootnet.in/covid19-in/unofficial/covid19india.org', {
+            cors: 'no-cors',
+            method: 'GET',
+            redirect: 'follow',
         })
-        .catch(err => console.log('error', err))
-  }
+          .then(resp => resp.json())
+          .then(res => {
+              this.setState({data: res.data})
+          })
+          .catch(err => console.log('error', err))
+    }
 
 
-  changeChart(chartType) {
-    this.setState({ selectedChart: chartType })
-  }
-  renderChart() {
-    
-    return {
-      "gender": <GenderChart data={this.state.data} />,
-      "age": <Age data={this.state.data} />,
-      "state": <AllStates data={this.state.data} />,
-      "india": <IndiaChart data={this.state.data} />
-    }[this.state.selectedChart]
-  }
+    changeChart(chartType) {
+        this.setState({selectedChart: chartType})
+    }
 
-  render() {
-    return this.state.data?<div className="app">
-      
-      <Header changeChart={this.changeChart} />
-      <div className={"chart-container"}>
-        {this.renderChart()}
-      </div>
-      <Footer />
-    </div>:"Loading Data......"
-  }
+    renderChart() {
+        return {
+            "generalDist": <GeneralDist data={this.state.data}/>,
+            "state": <AllStates data={this.state.data}/>,
+            "india": <IndiaChart data={this.state.data}/>
+        }[this.state.selectedChart]
+    }
+
+    render() {
+        return this.state.data ? <div className="app">
+            <Header navigateChart={this.changeChart} selectedButton={this.state.selectedChart}/>
+            <div className={"chart-container"}>
+                {this.renderChart()}
+            </div>
+            <Footer/>
+        </div> : "Loading Data......"
+    }
 }
 
 export default hot(App);

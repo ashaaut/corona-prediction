@@ -38,13 +38,13 @@ export default class GenderChart extends PureComponent {
         const coronaData = [
             {
                 "chartType": "bar",
-                "name": "Gender distribution",
+                "name": "Gender distribution Bar",
                 "content": { "male": males.length, "female": females.length }
             },
 
             {
                 "chartType": "pie",
-                "name": "Gender distribution",
+                "name": "Gender distribution Pie",
                 "content": { "male": males.length, "female": females.length }
             },
 
@@ -54,13 +54,13 @@ export default class GenderChart extends PureComponent {
 
         return <div className={"specific-chart-container"}>
         <div className={"chart-title"}> Gender Distribution</div>
-        <div className={"multiple-chart-container"}>
+        <div className={"multiple-chart-sideway"}>
         {coronaData.map(e => <div className={"plot-container"}>
                 {this.renderChart(e)}
             </div>
             )
 }
-            </div> 
+            </div>
         </div>
 
     }
