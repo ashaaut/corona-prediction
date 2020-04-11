@@ -35,6 +35,7 @@ class App extends React.Component {
     this.setState({ selectedChart: chartType })
   }
   renderChart() {
+    
     return {
       "gender": <GenderChart data={this.state.data} />,
       "age": <Age data={this.state.data} />,
@@ -45,6 +46,7 @@ class App extends React.Component {
 
   render() {
     return this.state.data?<div className="app">
+      
       <Header changeChart={this.changeChart} />
       <div className={"chart-container"}>
         {this.renderChart()}
