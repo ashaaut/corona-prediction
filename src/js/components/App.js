@@ -50,7 +50,7 @@ class App extends React.Component {
                 {this.renderChart()}
             </div>
             <Footer/>
-        </div> : "Loading Data......"
+        </div> : <div className={"data-loading"}> Loading Data...... </div>
     }
 }
 
