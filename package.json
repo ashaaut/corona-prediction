@@ -10,10 +10,13 @@
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development",
     "build-prod": "webpack -p --mode production",
-    "start": "webpack-dev-server --hot --mode development"
+    "dev": "webpack-dev-server --hot --mode development",
+    "start": "node server.js",
+    "heroku-postbuild": "webpack -p"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
+    "express": "^4.17.1",
     "plotly.js": "^1.52.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
