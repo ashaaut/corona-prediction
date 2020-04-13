@@ -1,5 +1,6 @@
 import Plot from 'react-plotly.js'
 import React, {PureComponent} from "react";
+import DateChart from './datesChart'
 
 export default class IndiaChart extends PureComponent {
     constructor(props) {
@@ -46,6 +47,7 @@ export default class IndiaChart extends PureComponent {
                     data={[{type: 'bar', x: stateNames, y: values},
                     ]} layout={{title: "INDIA"}} style={{width: "100%", height: "100%"}}/>
               </div>
+              <DateChart data={data}/>
           </div>
 
         )
