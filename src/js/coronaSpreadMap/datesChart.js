@@ -1,5 +1,5 @@
 import Plot from 'react-plotly.js'
-import React, { PureComponent } from "react";
+import React, {PureComponent} from "react";
 import LineChart from './directLineChart'
 import IncrementalLineChart from './incrementalLineChart'
 
@@ -20,12 +20,15 @@ export default class DateChart extends PureComponent {
     getAllCountOccurancesStatusWise(stateData, key) {
         return stateData.map(e => this.getAllCountOccurances(e, key))
     }
+
     getAllData(rawPatientData, states) {
         return states.map(e => this.filterData(rawPatientData, "status", e))
     }
+
     filterData(rawPatientData, key, value) {
         return rawPatientData.filter(data => data[key] === value)
     }
+
     assignKey(stateData, stateNames) {
         let newobj = {}
         for (let i = 0; i < stateData.length; i++) {
@@ -33,6 +36,7 @@ export default class DateChart extends PureComponent {
         }
         return newobj
     }
+
     changeFormat(date) {
         let dateList = date.split("/");
         let day = dateList[0];
@@ -53,15 +57,16 @@ export default class DateChart extends PureComponent {
         }
         return newValues
     }
+
     render() {
-        const { data } = this.props;
+        const {data} = this.props;
         let rawPatientData = data["rawPatientData"];
         let allStatus = Object.keys(this.getAllCountOccurances(rawPatientData, "status"))
         let allDataStatusWise = this.getAllData(rawPatientData, allStatus)
         let countDataDateWise = this.getAllCountOccurancesStatusWise(allDataStatusWise, "reportedOn")
         let allStatusData = this.assignKey(countDataDateWise, allStatus)
-        delete allStatusData["Migrated"]
-        delete allStatusData["undefined"]
+        delete allStatusData["Migrated"];
+        delete allStatusData["undefined"];
         let allStatusNames = Object.keys(allStatusData)
         // let recovered = allStatusData["Recovered"]
         // let values = Object.values(recovered)
@@ -69,12 +74,23 @@ export default class DateChart extends PureComponent {
         // console.log(this.getIncrementalValues(values))
 
         return (
-            <div className={"specific-chart-container"}>
-                {allStatusNames.map(statusName => <div className={"app-plot-container india-chart"}> <LineChart
-                    data={{ statusName: statusName, statusData: allStatusData[statusName] }} changeFormat={this.changeFormat} /></div>)}
-                {allStatusNames.map(statusName => <div className={"app-plot-container india-chart"}> <IncrementalLineChart
-                    data={{ statusName: statusName, statusData: allStatusData[statusName] }} changeFormat={this.changeFormat} getIncrementalValues={this.getIncrementalValues} /></div>)}
-            </div>
+          <div>
+              <div className={"main-title"}> Date specific Charts</div>
+              <div className={"multiple-chart-sideway"}>
+                  <div className={"multiple-chart-updown"}>
+                      <div className={"chart-title"}> Incremental line charts</div>
+                      {allStatusNames.map(statusName => <div className={"multiple-chart-sideway"}><IncrementalLineChart
+                        data={{statusName: statusName, statusData: allStatusData[statusName]}}
+                        changeFormat={this.changeFormat} getIncrementalValues={this.getIncrementalValues}/></div>)}
+                  </div>
+                  <div className={"multiple-chart-updown"}>
+                      <div className={"chart-title"}> Direct line charts</div>
+                      {allStatusNames.map(statusName => <div className={"multiple-chart-sideway"}><LineChart
+                        data={{statusName: statusName, statusData: allStatusData[statusName]}}
+                        changeFormat={this.changeFormat}/></div>)}
+                  </div>
+              </div>
+          </div>
 
         )
 

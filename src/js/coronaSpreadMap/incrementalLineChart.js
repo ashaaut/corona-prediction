@@ -14,11 +14,10 @@ export default class IncrementalLineChart extends PureComponent {
         let dates = Object.keys(data["statusData"]);
         let values = dates.map(dates => data["statusData"][dates]);
         return (
-            <div>
+            <div className={"app-plot-container"}>
                 <Plot
                     data={[{ type: 'scatter', x: dates.map(d => this.props.changeFormat(d)), y: this.props.getIncrementalValues(values),line: {shape: 'spline'} },
                     ]} layout={{ width: "100%", height: "100%", title: data["statusName"] }} />
-
             </div>
 
         )
