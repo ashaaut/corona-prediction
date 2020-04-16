@@ -22,7 +22,7 @@ export default class StateChart extends PureComponent {
         return (
           <div className={"app-plot-container"}>
               <Plot
-                data={[{type: 'bar', x: districtNames, y: values},
+                data={[{type: 'line', x: Object.keys(data["statedata"]), y: values},
                 ]} layout={{width: "100%", height: "100%", title: data["stateName"]}}/>
               {unknownData ? <div>Awaiting details for {unknownData} patients</div> : ""}
           </div>

@@ -49,9 +49,10 @@ export default class AllStateCharts extends PureComponent {
 
         const rawPatientData = data["rawPatientData"];
         let repeatedStateNames = this.getAllValuesForKey(rawPatientData, "state");
+        
         let stateNames = this.removeDuplicates(repeatedStateNames);
+        
         let uniqueStateAllData = this.getAllData(rawPatientData, stateNames);
-        console.log(uniqueStateAllData)
         let r = this.getAllCountOccurancesStateWise(uniqueStateAllData, "district");
         let allStatedata = this.assignKey(r, stateNames);
         let allStateNames = Object.keys(allStatedata);
