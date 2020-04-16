@@ -68,6 +68,7 @@ export default class DateChart extends PureComponent {
         delete allStatusData["Migrated"];
         delete allStatusData["undefined"];
         let allStatusNames = Object.keys(allStatusData)
+        let colorMap = {"Hospitalized": "orange", "Recovered": "green", "Deceased": "gray"}
         // let recovered = allStatusData["Recovered"]
         // let values = Object.values(recovered)
         // console.log(values.reduce((a, b) => a + b))
@@ -81,13 +82,14 @@ export default class DateChart extends PureComponent {
                       <div className={"chart-title"}> Incremental line charts</div>
                       {allStatusNames.map(statusName => <div className={"multiple-chart-sideway"}><IncrementalLineChart
                         data={{statusName: statusName, statusData: allStatusData[statusName]}}
-                        changeFormat={this.changeFormat} getIncrementalValues={this.getIncrementalValues}/></div>)}
+                        changeFormat={this.changeFormat} getIncrementalValues={this.getIncrementalValues}
+                        color={colorMap[statusName]}/></div>)}
                   </div>
                   <div className={"multiple-chart-updown"}>
-                      <div className={"chart-title"}> Direct line charts</div>
+                      <div className={"chart-title"}> Date Patient Counts</div>
                       {allStatusNames.map(statusName => <div className={"multiple-chart-sideway"}><LineChart
                         data={{statusName: statusName, statusData: allStatusData[statusName]}}
-                        changeFormat={this.changeFormat}/></div>)}
+                        changeFormat={this.changeFormat} color={colorMap[statusName]}/></div>)}
                   </div>
               </div>
           </div>
