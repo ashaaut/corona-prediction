@@ -1,6 +1,7 @@
 import Plot from 'react-plotly.js'
 import React, { PureComponent } from "react";
-import LineChart from './lineChart'
+import LineChart from './directLineChart'
+import IncrementalLineChart from './incrementalLineChart'
 
 
 export default class DateChart extends PureComponent {
@@ -41,13 +42,16 @@ export default class DateChart extends PureComponent {
         return reqDate
     }
 
-
-    renderchart(e) {
-        return (
-            <div>
-                e.map()
-            </div>
-        )
+    getIncrementalValues(list) {
+        let newValues = []
+        for (let i = 0; i < list.length; i++) {
+            let sum = 0
+            for (let j = 0; j <= i; j++) {
+                sum += list[j]
+            }
+            newValues.push(sum)
+        }
+        return newValues
     }
     render() {
         const { data } = this.props;
@@ -59,12 +63,17 @@ export default class DateChart extends PureComponent {
         delete allStatusData["Migrated"]
         delete allStatusData["Undefined"]
         let allStatusNames = Object.keys(allStatusData)
+        // let recovered = allStatusData["Recovered"]
+        // let values = Object.values(recovered)
+        // console.log(values.reduce((a, b) => a + b))
+        // console.log(this.getIncrementalValues(values))
 
-        console.log(allStatusData)
         return (
             <div className={"specific-chart-container"}>
                 {allStatusNames.map(statusName => <div className={"app-plot-container india-chart"}> <LineChart
                     data={{ statusName: statusName, statusData: allStatusData[statusName] }} changeFormat={this.changeFormat} /></div>)}
+                {allStatusNames.map(statusName => <div className={"app-plot-container india-chart"}> <IncrementalLineChart
+                    data={{ statusName: statusName, statusData: allStatusData[statusName] }} changeFormat={this.changeFormat} getIncrementalValues={this.getIncrementalValues} /></div>)}
             </div>
 
         )
