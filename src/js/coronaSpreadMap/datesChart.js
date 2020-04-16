@@ -51,31 +51,24 @@ export default class DateChart extends PureComponent {
     }
     render() {
         const { data } = this.props;
-        console.log(data)
         let rawPatientData = data["rawPatientData"];
-        let dateAndTotalCount = this.getAllCountOccurances(rawPatientData, "reportedOn")
-
         let allStatus = Object.keys(this.getAllCountOccurances(rawPatientData, "status"))
         let allDataStatusWise = this.getAllData(rawPatientData, allStatus)
         let countDataDateWise = this.getAllCountOccurancesStatusWise(allDataStatusWise, "reportedOn")
         let allStatusData = this.assignKey(countDataDateWise, allStatus)
+        delete allStatusData["Migrated"]
+        delete allStatusData["Undefined"]
         let allStatusNames = Object.keys(allStatusData)
+
         console.log(allStatusData)
         return (
             <div className={"specific-chart-container"}>
-                <div className={"chart-title"}> Date Chart</div>
-                <div className={"app-plot-container india-chart"}>
-                    <Plot
-                        data={[{ type: 'scatter', x: Object.keys(dateAndTotalCount).map(d => this.changeFormat(d)), y: Object.values(dateAndTotalCount) },
-                        ]} layout={{ width: "100%", height: "100%", title: data["statusName"] }} />
-
-                </div>
-                {allStatusNames.map(statusName => <LineChart
-                    data={{ statusName: statusName, statusData: allStatusData[statusName] }}changeFormat={this.changeFormat} />)}
-
+                {allStatusNames.map(statusName => <div className={"app-plot-container india-chart"}> <LineChart
+                    data={{ statusName: statusName, statusData: allStatusData[statusName] }} changeFormat={this.changeFormat} /></div>)}
             </div>
 
         )
+
     }
 
 }

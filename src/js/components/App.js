@@ -11,24 +11,24 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: undefined,
+            data: data.data,
             selectedChart: "india"
         }
         this.changeChart = this.changeChart.bind(this)
     }
 
-    componentWillMount() {
-        fetch('https://api.rootnet.in/covid19-in/unofficial/covid19india.org', {
-            cors: 'no-cors',
-            method: 'GET',
-            redirect: 'follow',
-        })
-          .then(resp => resp.json())
-          .then(res => {
-              this.setState({data: res.data})
-          })
-          .catch(err => console.log('error', err))
-    }
+    // componentWillMount() {
+    //     fetch('https://api.rootnet.in/covid19-in/unofficial/covid19india.org', {
+    //         cors: 'no-cors',
+    //         method: 'GET',
+    //         redirect: 'follow',
+    //     })
+    //       .then(resp => resp.json())
+    //       .then(res => {
+    //           this.setState({data: res.data})
+    //       })
+    //       .catch(err => console.log('error', err))
+    // }
 
 
     changeChart(chartType) {
