@@ -61,7 +61,7 @@ export default class DateChart extends PureComponent {
         let countDataDateWise = this.getAllCountOccurancesStatusWise(allDataStatusWise, "reportedOn")
         let allStatusData = this.assignKey(countDataDateWise, allStatus)
         delete allStatusData["Migrated"]
-        delete allStatusData["Undefined"]
+        delete allStatusData["undefined"]
         let allStatusNames = Object.keys(allStatusData)
         // let recovered = allStatusData["Recovered"]
         // let values = Object.values(recovered)

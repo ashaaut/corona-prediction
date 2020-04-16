@@ -12,7 +12,9 @@ export default class StateChart extends PureComponent {
         let {data} = this.props;
         let districtNames = Object.keys(data["stateData"]);
         let values = districtNames.map(districtName => data["stateData"][districtName]);
+        
         const index = districtNames.indexOf("");
+        
         let unknownData = undefined;
         if (index > -1) {
             districtNames.splice(index, 1);
@@ -22,7 +24,7 @@ export default class StateChart extends PureComponent {
         return (
           <div className={"app-plot-container"}>
               <Plot
-                data={[{type: 'line', x: Object.keys(data["statedata"]), y: values},
+                data={[{type: 'bar', x: districtNames, y: values},
                 ]} layout={{width: "100%", height: "100%", title: data["stateName"]}}/>
               {unknownData ? <div>Awaiting details for {unknownData} patients</div> : ""}
           </div>
