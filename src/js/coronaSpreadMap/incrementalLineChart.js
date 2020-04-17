@@ -1,5 +1,5 @@
 import Plot from 'react-plotly.js'
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 
 
 export default class IncrementalLineChart extends PureComponent {
@@ -10,23 +10,54 @@ export default class IncrementalLineChart extends PureComponent {
 
 
     render() {
-        let {data,color} = this.props;
-        let dates = Object.keys(data["statusData"]);
-        let values = dates.map(dates => data["statusData"][dates]);
+        let { data } = this.props;
+        console.log(data)
+        let dates = data.map(e => e["date"])
         return (
-          <div className={"app-plot-container"}>
-              <Plot
-                data={[{
-                    type: 'scatter',
-                    marker: {
-                        color: color
-                    },
-                    x: dates.map(d => this.props.changeFormat(d)),
-                    y: this.props.getIncrementalValues(values),
-                    line: {shape: 'spline'}
-                },
-                ]} layout={{width: "100%", height: "100%", title: data["statusName"]}}/>
-          </div>
+            <div>
+                <div className={"app-plot-container"}>
+                    <Plot
+                        data={[{
+                            type: 'scatter',
+                            x: dates.map(d => this.props.changeFormat(d)),
+                            y: data.map(e => e["totalconfirmed"]),
+                            marker: {
+                                color: 'gray'
+                            },
+                            line: { shape: 'spline' }
+                        },
+                        ]}
+                        layout={{ width: "100%", height: "100%", title: "totalConfirmed", }} />
+                </div>
+
+                <div className={"app-plot-container"}>
+                    <Plot
+                        data={[{
+                            type: 'scatter',
+                            x: dates.map(d => this.props.changeFormat(d)),
+                            y: data.map(e => e["totalrecovered"]),
+                            marker: {
+                                color: 'orange'
+                            },
+                            line: { shape: 'spline' }
+                        },
+                        ]} layout={{ width: "100%", height: "100%", title: "totalRecovered" }} />
+                </div>
+                <div className={"app-plot-container"}>
+                    <Plot
+                        data={[{
+                            type: 'scatter',
+                            x: dates.map(d => this.props.changeFormat(d)),
+                            y: data.map(e => e["totaldeceased"]),
+                            marker: {
+                                color: 'green'
+                            },
+                            line: { shape: 'spline' }
+                        },
+                        ]}
+                        layout={{ width: "100%", height: "100%", title: "totalDeceased" }} />
+                </div>
+            </div>
 
         )
 

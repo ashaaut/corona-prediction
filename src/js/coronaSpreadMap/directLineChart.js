@@ -10,24 +10,55 @@ export default class LineChart extends PureComponent {
 
 
     render() {
-        let {data, color} = this.props;
-        let dates = Object.keys(data["statusData"]);
-        let values = dates.map(dates => data["statusData"][dates]);
+        
+        let { data } = this.props;
+        console.log(data)
+        let dates = data.map(e => e["date"])
         return (
-          <div className={"app-plot-container"}>
-              <Plot
-                data={[{
-                    type: 'bar',
-                    marker: {
-                        color: color
+            <div>
+            <div className={"app-plot-container"}>
+                <Plot
+                    data={[{
+                        type: 'scatter',
+                        x: dates.map(d => this.props.changeFormat(d)),
+                        y: data.map(e => e["dailyconfirmed"]),
+                        marker: {
+                            color: 'gray'
+                        },
+                        line: { shape: 'spline' }
                     },
-                    x: dates.map(d => this.props.changeFormat(d)),
-                    y: values
-                },
-                ]} layout={{width: "100%", height: "100%", title: data["statusName"]}}/>
+                    ]}
+                    layout={{ width: "100%", height: "100%", title: "dailyConfirmed", }} />
+            </div>
 
-          </div>
-
+            <div className={"app-plot-container"}>
+                <Plot
+                    data={[{
+                        type: 'scatter',
+                        x: dates.map(d => this.props.changeFormat(d)),
+                        y: data.map(e => e["dailyrecovered"]),
+                        marker: {
+                            color: 'orange'
+                        },
+                        line: { shape: 'spline' }
+                    },
+                    ]} layout={{ width: "100%", height: "100%", title: "dailyRecovered" }} />
+            </div>
+            <div className={"app-plot-container"}>
+                <Plot
+                    data={[{
+                        type: 'scatter',
+                        x: dates.map(d => this.props.changeFormat(d)),
+                        y: data.map(e => e["dailydeceased"]),
+                        marker: {
+                            color: 'green'
+                        },
+                        line: { shape: 'spline' }
+                    },
+                    ]}
+                    layout={{ width: "100%", height: "100%", title: "dailyDeceased" }} />
+            </div>
+        </div>
         )
 
     }
