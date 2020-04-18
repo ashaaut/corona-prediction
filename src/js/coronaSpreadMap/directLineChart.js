@@ -12,20 +12,18 @@ export default class LineChart extends PureComponent {
     render() {
         
         let { data } = this.props;
-        console.log(data)
         let dates = data.map(e => e["date"])
         return (
             <div>
             <div className={"app-plot-container"}>
                 <Plot
                     data={[{
-                        type: 'scatter',
+                        type: 'bar',
                         x: dates.map(d => this.props.changeFormat(d)),
                         y: data.map(e => e["dailyconfirmed"]),
                         marker: {
-                            color: 'gray'
+                            color: 'orange'
                         },
-                        line: { shape: 'spline' }
                     },
                     ]}
                     layout={{ width: "100%", height: "100%", title: "dailyConfirmed", }} />
@@ -34,26 +32,24 @@ export default class LineChart extends PureComponent {
             <div className={"app-plot-container"}>
                 <Plot
                     data={[{
-                        type: 'scatter',
+                        type: 'bar',
                         x: dates.map(d => this.props.changeFormat(d)),
                         y: data.map(e => e["dailyrecovered"]),
                         marker: {
-                            color: 'orange'
+                            color: 'green'
                         },
-                        line: { shape: 'spline' }
                     },
                     ]} layout={{ width: "100%", height: "100%", title: "dailyRecovered" }} />
             </div>
             <div className={"app-plot-container"}>
                 <Plot
                     data={[{
-                        type: 'scatter',
+                        type: 'bar',
                         x: dates.map(d => this.props.changeFormat(d)),
                         y: data.map(e => e["dailydeceased"]),
                         marker: {
-                            color: 'green'
+                            color: 'gray'
                         },
-                        line: { shape: 'spline' }
                     },
                     ]}
                     layout={{ width: "100%", height: "100%", title: "dailyDeceased" }} />

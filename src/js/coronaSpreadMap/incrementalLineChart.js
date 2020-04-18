@@ -11,7 +11,6 @@ export default class IncrementalLineChart extends PureComponent {
 
     render() {
         let { data } = this.props;
-        console.log(data)
         let dates = data.map(e => e["date"])
         return (
             <div>
@@ -22,7 +21,7 @@ export default class IncrementalLineChart extends PureComponent {
                             x: dates.map(d => this.props.changeFormat(d)),
                             y: data.map(e => e["totalconfirmed"]),
                             marker: {
-                                color: 'gray'
+                                color: 'orange'
                             },
                             line: { shape: 'spline' }
                         },
@@ -37,7 +36,7 @@ export default class IncrementalLineChart extends PureComponent {
                             x: dates.map(d => this.props.changeFormat(d)),
                             y: data.map(e => e["totalrecovered"]),
                             marker: {
-                                color: 'orange'
+                                color: 'green'
                             },
                             line: { shape: 'spline' }
                         },
@@ -50,7 +49,7 @@ export default class IncrementalLineChart extends PureComponent {
                             x: dates.map(d => this.props.changeFormat(d)),
                             y: data.map(e => e["totaldeceased"]),
                             marker: {
-                                color: 'green'
+                                color: 'gray'
                             },
                             line: { shape: 'spline' }
                         },

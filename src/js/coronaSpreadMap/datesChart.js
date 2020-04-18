@@ -6,22 +6,8 @@ import IncrementalLineChart from './incrementalLineChart'
 export default class DateChart extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = {
-            data: undefined
-        };
-    }
-
-    fetchData() {
-        fetch('https://api.covid19india.org/data.json', {
-            cors: 'no-cors',
-            method: 'GET',
-            redirect: 'follow',
-        })
-            .then(resp => resp.json())
-            .then(res => {
-                this.setState({ data: res.cases_time_series })
-            })
-            .catch(err => console.log('error', err))
+        this.state = {}
+        
     }
 
 
@@ -36,9 +22,9 @@ export default class DateChart extends PureComponent {
     }
 
     render() {
-        if (!this.state.data) {
-            this.fetchData()
-        }
+        let {data}=this.props
+        let rawData=data["cases_time_series"]
+  
         return (
             <div>
                 <div className={"main-title"}> Date specific Charts</div>
@@ -46,14 +32,13 @@ export default class DateChart extends PureComponent {
                     <div className={"multiple-chart-updown"}>
                         <div className={"chart-title"}> Incremental line charts</div>
                         <div>
-                            {this.state.data ? <IncrementalLineChart data={this.state.data} changeFormat={this.changeFormat} /> : <div className={"data-loading"}> Loading Data...... </div>}
-
+                            <IncrementalLineChart data={rawData} changeFormat={this.changeFormat} /> 
                         </div>
                     </div>
                     <div className={"multiple-chart-updown"}>
                         <div className={"chart-title"}> Date Patients Count</div>
                         <div>
-                            {this.state.data ? <LineChart data={this.state.data} changeFormat={this.changeFormat} /> : <div className={"data-loading"}> Loading Data...... </div>}
+                            <LineChart data={rawData} changeFormat={this.changeFormat} /> 
 
                         </div>
                     </div>
