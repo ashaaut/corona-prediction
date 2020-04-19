@@ -29,7 +29,7 @@ export default class IndiaChart extends PureComponent {
         }
         const data = this.state.stateAndStatusData;
         let stateData = data['statewise'];
-        let total = stateData["0"]["confirmed"];
+        let total = stateData["0"]
         delete stateData["0"];
         let stateNames = stateData.map(s => s["state"]);
         let confirmed = stateData.map(s => s["confirmed"]);
@@ -71,11 +71,18 @@ export default class IndiaChart extends PureComponent {
         return (
           <div className={"specific-chart-container"}>
               <div className={"main-title"}> India overview</div>
-              <div className={"chart-title"}> Total:{total}</div>
+              <div className={"total-count-div"}>
+                  <div className={"chart-title confirmed-color"}> Total Confirmed:{total["confirmed"]}</div>
+                  <div className={"chart-title recovered-color"}> Total Recovered:{total["recovered"]}</div>
+                  <div className={"chart-title deaths-color"}> Total Deaths:{total["deaths"]}</div>
+              </div>
               <div className="app-plot-container india-chart">
                   <Plot
                     data={chartData}
-                    layout={{barmode: 'stack', title: "INDIA"}} style={{width: "100%", height: "100%"}}/>
+                    layout={{
+                        barmode: 'stack', title: "INDIA", yaxis: {fixedrange: true},
+                        xaxis: {fixedrange: true}
+                    }} style={{width: "100%", height: "100%"}}/>
               </div>
               <DateChart data={data}/>
           </div>

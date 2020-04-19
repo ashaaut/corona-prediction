@@ -33,7 +33,10 @@ export default class AgeChart extends PureComponent {
                   <div className={"app-plot-container"}>
                       <Plot
                         data={[{type: 'bar', x: Object.keys(ageData), y: Object.values(ageData)},
-                        ]} layout={{width: "100%", height: "100%", title: "Age Distribution Bar"}}/>
+                        ]} layout={{
+                          width: "100%", height: "100%", title: "Age Distribution Bar", yaxis: {fixedrange: true},
+                          xaxis: {fixedrange: true}
+                      }}/>
                       Awaiting details for {ageUnknown} patients
                   </div>
                   <div className={"app-plot-container"}>

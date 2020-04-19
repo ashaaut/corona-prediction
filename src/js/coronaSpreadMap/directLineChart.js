@@ -10,13 +10,13 @@ export default class LineChart extends PureComponent {
 
 
     render() {
-        
-        let { data } = this.props;
+
+        let {data} = this.props;
         let dates = data.map(e => e["date"])
         return (
-            <div>
-            <div className={"app-plot-container"}>
-                <Plot
+          <div>
+              <div className={"app-plot-container"}>
+                  <Plot
                     data={[{
                         type: 'bar',
                         x: dates.map(d => this.props.changeFormat(d)),
@@ -26,11 +26,14 @@ export default class LineChart extends PureComponent {
                         },
                     },
                     ]}
-                    layout={{ width: "100%", height: "100%", title: "dailyConfirmed", }} />
-            </div>
+                    layout={{
+                        width: "100%", height: "100%", title: "dailyConfirmed", yaxis: {fixedrange: true},
+                        xaxis: {fixedrange: true}
+                    }}/>
+              </div>
 
-            <div className={"app-plot-container"}>
-                <Plot
+              <div className={"app-plot-container"}>
+                  <Plot
                     data={[{
                         type: 'bar',
                         x: dates.map(d => this.props.changeFormat(d)),
@@ -39,10 +42,13 @@ export default class LineChart extends PureComponent {
                             color: 'green'
                         },
                     },
-                    ]} layout={{ width: "100%", height: "100%", title: "dailyRecovered" }} />
-            </div>
-            <div className={"app-plot-container"}>
-                <Plot
+                    ]} layout={{
+                      width: "100%", height: "100%", title: "dailyRecovered", yaxis: {fixedrange: true},
+                      xaxis: {fixedrange: true}
+                  }}/>
+              </div>
+              <div className={"app-plot-container"}>
+                  <Plot
                     data={[{
                         type: 'bar',
                         x: dates.map(d => this.props.changeFormat(d)),
@@ -52,10 +58,13 @@ export default class LineChart extends PureComponent {
                         },
                     },
                     ]}
-                    layout={{ width: "100%", height: "100%", title: "dailyDeceased" }} />
-            </div>
-        </div>
+                    layout={{
+                        width: "100%", height: "100%", title: "dailyDeceased", yaxis: {fixedrange: true},
+                        xaxis: {fixedrange: true}
+                    }}/>
+              </div>
+          </div>
         )
 
     }
-} 
+}

@@ -1,5 +1,5 @@
 import Plot from 'react-plotly.js'
-import React, { PureComponent } from "react";
+import React, {PureComponent} from "react";
 
 
 export default class IncrementalLineChart extends PureComponent {
@@ -10,55 +10,64 @@ export default class IncrementalLineChart extends PureComponent {
 
 
     render() {
-        let { data } = this.props;
-        let dates = data.map(e => e["date"])
+        let {data} = this.props;
+        let dates = data.map(e => e["date"]);
         return (
-            <div>
-                <div className={"app-plot-container"}>
-                    <Plot
-                        data={[{
-                            type: 'scatter',
-                            x: dates.map(d => this.props.changeFormat(d)),
-                            y: data.map(e => e["totalconfirmed"]),
-                            marker: {
-                                color: 'orange'
-                            },
-                            line: { shape: 'spline' }
+          <div>
+              <div className={"app-plot-container"}>
+                  <Plot
+                    data={[{
+                        type: 'scatter',
+                        x: dates.map(d => this.props.changeFormat(d)),
+                        y: data.map(e => e["totalconfirmed"]),
+                        marker: {
+                            color: 'orange'
                         },
-                        ]}
-                        layout={{ width: "100%", height: "100%", title: "totalConfirmed", }} />
-                </div>
+                        line: {shape: 'spline'}
+                    },
+                    ]}
+                    layout={{
+                        width: "100%", height: "100%", title: "totalConfirmed", yaxis: {fixedrange: true},
+                        xaxis: {fixedrange: true}
+                    }}/>
+              </div>
 
-                <div className={"app-plot-container"}>
-                    <Plot
-                        data={[{
-                            type: 'scatter',
-                            x: dates.map(d => this.props.changeFormat(d)),
-                            y: data.map(e => e["totalrecovered"]),
-                            marker: {
-                                color: 'green'
-                            },
-                            line: { shape: 'spline' }
+              <div className={"app-plot-container"}>
+                  <Plot
+                    data={[{
+                        type: 'scatter',
+                        x: dates.map(d => this.props.changeFormat(d)),
+                        y: data.map(e => e["totalrecovered"]),
+                        marker: {
+                            color: 'green'
                         },
-                        ]} layout={{ width: "100%", height: "100%", title: "totalRecovered" }} />
-                </div>
-                <div className={"app-plot-container"}>
-                    <Plot
-                        data={[{
-                            type: 'scatter',
-                            x: dates.map(d => this.props.changeFormat(d)),
-                            y: data.map(e => e["totaldeceased"]),
-                            marker: {
-                                color: 'gray'
-                            },
-                            line: { shape: 'spline' }
+                        line: {shape: 'spline'}
+                    },
+                    ]} layout={{
+                      width: "100%", height: "100%", title: "totalRecovered", yaxis: {fixedrange: true},
+                      xaxis: {fixedrange: true}
+                  }}/>
+              </div>
+              <div className={"app-plot-container"}>
+                  <Plot
+                    data={[{
+                        type: 'scatter',
+                        x: dates.map(d => this.props.changeFormat(d)),
+                        y: data.map(e => e["totaldeceased"]),
+                        marker: {
+                            color: 'gray'
                         },
-                        ]}
-                        layout={{ width: "100%", height: "100%", title: "totalDeceased" }} />
-                </div>
-            </div>
+                        line: {shape: 'spline'}
+                    },
+                    ]}
+                    layout={{
+                        width: "100%", height: "100%", title: "totalDeceased", yaxis: {fixedrange: true},
+                        xaxis: {fixedrange: true}
+                    }}/>
+              </div>
+          </div>
 
         )
 
     }
-} 
+}

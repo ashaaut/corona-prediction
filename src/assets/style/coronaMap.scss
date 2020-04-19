@@ -55,6 +55,20 @@
   display: flex;
   justify-content: center;
 }
+.confirmed-color{
+  color: orange;
+}
+.recovered-color{
+  color: green;
+}
+.deaths-color{
+  color: gray;
+}
+
+.total-count-div{
+  display: flex;
+  flex-wrap: wrap;
+}
 .chart-selector-container{
   display: flex;
   flex-direction: column;
