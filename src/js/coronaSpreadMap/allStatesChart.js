@@ -52,9 +52,7 @@ export default class AllStateCharts extends PureComponent {
         const {data} = this.props;
         const rawPatientData = data["rawPatientData"];
         let repeatedStateNames = this.getAllValuesForKey(rawPatientData, "state");
-
         let stateNames = this.removeDuplicates(repeatedStateNames);
-
         let uniqueStateAllData = this.getAllData(rawPatientData, stateNames);
         let r = this.getAllCountOccurancesStateWise(uniqueStateAllData, "district");
         let allStatedata = this.assignKey(r, stateNames);
@@ -68,9 +66,9 @@ export default class AllStateCharts extends PureComponent {
               <div className={"chart-selector-container"}>
                   <div className={"chart-selector"}>
                       <div className={"chart-title"}>Selected Chart</div>
-                      <select name="select" onChange={(e) => this.changeSelected(e)}>
+                      <select name="select" onChange={(e) => this.changeSelected(e)} value={this.state.selected}>
                           {allStateNames.map(function (n) {
-                              return (<option value={n} selected={selectedState === n}>{n}</option>);
+                              return (<option value={n} key={`option-${n}`}>{n}</option>);
                           })}
                       </select>
                   </div>
@@ -83,9 +81,10 @@ export default class AllStateCharts extends PureComponent {
                   </div>
 
               </div>
-              <div className={"main-title"}> All State Charts </div>
+              <div className={"main-title"}> All State Charts</div>
               <div className={"multiple-chart-sideway"}>
                   {allStateNames.map(stateName => <StateChart
+                    key={stateName}
                     data={{stateName: stateName, stateData: allStatedata[stateName]}}/>)}
               </div>
           </div>

@@ -12,22 +12,9 @@ class App extends React.Component {
         super(props);
         this.state = {
             data: undefined,
-            selectedChart: "india",
-            stateAndStatusData:undefined
-        }
+            selectedChart: "india"
+        };
         this.changeChart = this.changeChart.bind(this)
-    }
-    fetchData() {
-        fetch('https://api.covid19india.org/data.json', {
-            cors: 'no-cors',
-            method: 'GET',
-            redirect: 'follow',
-        })
-            .then(resp => resp.json())
-            .then(res => {
-                this.setState({ stateAndStatusData: res })
-            })
-            .catch(err => console.log('error', err))
     }
 
     componentWillMount() {
@@ -52,14 +39,11 @@ class App extends React.Component {
         return {
             "generalDist": <GeneralDist data={this.state.data}/>,
             "state": <AllStates data={this.state.data}/>,
-            "india": this.state.stateAndStatusData?<IndiaChart data={this.state.stateAndStatusData}/>:<div className={"data-loading"}> Loading Data...... </div>
+            "india": <IndiaChart/>
         }[this.state.selectedChart]
     }
 
     render() {
-        if (!this.state.stateAndStatusData) {
-            this.fetchData()
-        }
         return this.state.data ? <div className="app">
             <Header navigateChart={this.changeChart} selectedButton={this.state.selectedChart}/>
             <div className={"chart-container"}>
