@@ -6,7 +6,7 @@ import StateChart from './stateChart'
 export default class AllStateCharts extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {selected: "Maharashtra"};
     }
 
     filterData(rawPatientData, key, value) {
@@ -44,23 +44,46 @@ export default class AllStateCharts extends PureComponent {
         return newobj
     }
 
+    changeSelected(e) {
+        this.setState({selected: e.target.value})
+    }
+
     render() {
         const {data} = this.props;
-
         const rawPatientData = data["rawPatientData"];
         let repeatedStateNames = this.getAllValuesForKey(rawPatientData, "state");
-        
+
         let stateNames = this.removeDuplicates(repeatedStateNames);
-        
+
         let uniqueStateAllData = this.getAllData(rawPatientData, stateNames);
         let r = this.getAllCountOccurancesStateWise(uniqueStateAllData, "district");
         let allStatedata = this.assignKey(r, stateNames);
         let allStateNames = Object.keys(allStatedata);
+        let selectedState = this.state.selected;
+        let selectedData = allStatedata[selectedState];
 
         return (
-
           <div className={"specific-chart-container"}>
               <div className={"main-title"}> State Charts</div>
+              <div className={"chart-selector-container"}>
+                  <div className={"chart-selector"}>
+                      <div className={"chart-title"}>Selected Chart</div>
+                      <select name="select" onChange={(e) => this.changeSelected(e)}>
+                          {allStateNames.map(function (n) {
+                              return (<option value={n} selected={selectedState === n}>{n}</option>);
+                          })}
+                      </select>
+                  </div>
+                  <div className={"selected-plot-container"}>
+                      <StateChart
+                        data={{
+                            stateName: selectedState,
+                            stateData: selectedData
+                        }}/>
+                  </div>
+
+              </div>
+              <div className={"main-title"}> All State Charts </div>
               <div className={"multiple-chart-sideway"}>
                   {allStateNames.map(stateName => <StateChart
                     data={{stateName: stateName, stateData: allStatedata[stateName]}}/>)}
@@ -70,4 +93,4 @@ export default class AllStateCharts extends PureComponent {
         )
 
     }
-} 
+}

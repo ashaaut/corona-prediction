@@ -55,3 +55,12 @@
   display: flex;
   justify-content: center;
 }
+.chart-selector-container{
+  display: flex;
+  flex-direction: column;
+  .chart-selector{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+}

@@ -13,7 +13,6 @@ export default class IndiaChart extends PureComponent {
 
         const data = this.props.data
         let stateData = data['statewise']
-        console.log(stateData)
         let total = stateData["0"]["confirmed"]
         delete stateData["0"]
 
@@ -70,4 +69,4 @@ export default class IndiaChart extends PureComponent {
         )
 
     }
-} 
+}
