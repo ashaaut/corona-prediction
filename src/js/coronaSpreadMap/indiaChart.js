@@ -31,6 +31,7 @@ export default class IndiaChart extends PureComponent {
         let stateData = data['statewise'];
         let total = stateData["0"]
         delete stateData["0"];
+        console.log(data)
         let stateNames = stateData.map(s => s["state"]);
         let confirmed = stateData.map(s => s["confirmed"]);
         let deaths = stateData.map(s => s["deaths"]);

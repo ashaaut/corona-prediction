@@ -1,5 +1,5 @@
 import Plot from 'react-plotly.js'
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 
 
 export default class StateChart extends PureComponent {
@@ -9,28 +9,19 @@ export default class StateChart extends PureComponent {
     }
 
     render() {
-        let {data} = this.props;
-        let districtNames = Object.keys(data["stateData"]);
-        let values = districtNames.map(districtName => data["stateData"][districtName]);
-
-        const index = districtNames.indexOf("");
-
-        let unknownData = undefined;
-        if (index > -1) {
-            districtNames.splice(index, 1);
-            unknownData = values[index];
-            values.splice(index, 1);
-        }
+        let { data } = this.props;
+        let districtNames = Object.keys(data["stateData"])
+        let values = districtNames.map(districtName => data["stateData"][districtName]["confirmed"])
         return (
-          <div className={"app-plot-container"}>
-              <Plot
-                data={[{type: 'bar', x: districtNames, y: values},
-                ]} layout={{
-                  width: "100%", height: "100%", title: data["stateName"], yaxis: {fixedrange: true},
-                  xaxis: {fixedrange: true}
-              }}/>
-              {unknownData ? <div>Awaiting details for {unknownData} patients</div> : ""}
-          </div>
+            <div className={"app-plot-container"}>
+                <Plot
+                    data={[{ type: 'bar', x: districtNames, y: values },
+                    ]} layout={{
+                        width: "100%", height: "100%", title: data["stateName"], yaxis: { fixedrange: true },
+                        xaxis: { fixedrange: true }
+                    }} />
+
+            </div>
 
         )
 
