@@ -27,7 +27,7 @@ export default class IncrementalLineChart extends PureComponent {
                     },
                     ]}
                     layout={{
-                        width: "100%", height: "100%", title: "TotalConfirmed", yaxis: {fixedrange: true},
+                        width: "100%", height: "100%", title: "Total Confirmed", yaxis: {fixedrange: true},
                         xaxis: {fixedrange: true}
                     }}/>
               </div>
@@ -44,7 +44,7 @@ export default class IncrementalLineChart extends PureComponent {
                         line: {shape: 'spline'}
                     },
                     ]} layout={{
-                      width: "100%", height: "100%", title: "TotalRecovered", yaxis: {fixedrange: true},
+                      width: "100%", height: "100%", title: "Total Recovered", yaxis: {fixedrange: true},
                       xaxis: {fixedrange: true}
                   }}/>
               </div>
@@ -61,7 +61,7 @@ export default class IncrementalLineChart extends PureComponent {
                     },
                     ]}
                     layout={{
-                        width: "100%", height: "100%", title: "TotalDeceased", yaxis: {fixedrange: true},
+                        width: "100%", height: "100%", title: "Total Deceased", yaxis: {fixedrange: true},
                         xaxis: {fixedrange: true}
                     }}/>
               </div>
