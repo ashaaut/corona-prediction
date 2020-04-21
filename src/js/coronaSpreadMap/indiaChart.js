@@ -25,17 +25,6 @@ export default class IndiaChart extends PureComponent {
 
     render() {
         if (!this.state.stateAndStatusData) {
-            // <div class="loading">
-            //     <div class="text-center-middle">
-            //         <div class="lds-ellipsis">
-            //             <div></div>
-            //             <div></div>
-            //             <div></div>
-            //             <div></div>
-            //         </div>
-            //     </div>
-
-            // </div>
             return <div className={"data-loading"}> Loading Data...... </div>
         }
         const data = this.state.stateAndStatusData;
@@ -81,7 +70,7 @@ export default class IndiaChart extends PureComponent {
 
         return (
           <div className={"specific-chart-container"}>
-              <div className={"main-title"}> India overview</div>
+              <div className={"main-title"}> India Overview</div>
               <div className={"total-count-div"}>
                   <div className={"chart-title confirmed-color"}> Total Confirmed:{total["confirmed"]}</div>
                   <div className={"chart-title recovered-color"}> Total Recovered:{total["recovered"]}</div>

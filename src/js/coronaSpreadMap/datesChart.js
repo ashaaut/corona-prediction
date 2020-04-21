@@ -27,10 +27,10 @@ export default class DateChart extends PureComponent {
   
         return (
             <div>
-                <div className={"main-title"}> Date specific Charts</div>
+                <div className={"main-title"}> Date Specific Charts</div>
                 <div className={"multiple-chart-sideway"}>
                     <div className={"multiple-chart-updown"}>
-                        <div className={"chart-title"}> Incremental line charts</div>
+                        <div className={"chart-title"}> Incremental Line Charts</div>
                         <div>
                             <IncrementalLineChart data={rawData} changeFormat={this.changeFormat} /> 
                         </div>

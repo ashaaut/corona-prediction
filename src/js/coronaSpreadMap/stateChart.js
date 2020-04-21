@@ -15,10 +15,14 @@ export default class StateChart extends PureComponent {
         if (data["stateData"]["Unknown"]) {
             unknown = data["stateData"]["Unknown"]["confirmed"]
         }
-        delete data["stateData"]["Unknown"]
         let districtNames = Object.keys(data["stateData"])
         let values = districtNames.map(districtName => data["stateData"][districtName]["confirmed"])
-
+        let index=districtNames.indexOf("Unknown")
+        if(index>0){
+            districtNames.splice(index,1)
+            values.splice(index,1)
+        }
+        
         return (
             <div className={"app-plot-container"}>
                 <Plot
