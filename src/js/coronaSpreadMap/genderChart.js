@@ -41,13 +41,13 @@ export default class GenderChart extends PureComponent {
         const coronaData = [
             {
                 "chartType": "bar",
-                "name": "Gender distribution Bar",
+                "name": "Gender Distribution Bar",
                 "content": { "male": males.length, "female": females.length }
             },
 
             {
                 "chartType": "pie",
-                "name": "Gender distribution Pie",
+                "name": "Gender Distribution Pie",
                 "content": { "male": males.length, "female": females.length }
             },
 

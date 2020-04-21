@@ -27,7 +27,7 @@ export default class LineChart extends PureComponent {
                     },
                     ]}
                     layout={{
-                        width: "100%", height: "100%", title: "dailyConfirmed", yaxis: {fixedrange: true},
+                        width: "100%", height: "100%", title: "DailyConfirmed", yaxis: {fixedrange: true},
                         xaxis: {fixedrange: true}
                     }}/>
               </div>
@@ -43,7 +43,7 @@ export default class LineChart extends PureComponent {
                         },
                     },
                     ]} layout={{
-                      width: "100%", height: "100%", title: "dailyRecovered", yaxis: {fixedrange: true},
+                      width: "100%", height: "100%", title: "DailyRecovered", yaxis: {fixedrange: true},
                       xaxis: {fixedrange: true}
                   }}/>
               </div>
@@ -59,7 +59,7 @@ export default class LineChart extends PureComponent {
                     },
                     ]}
                     layout={{
-                        width: "100%", height: "100%", title: "dailyDeceased", yaxis: {fixedrange: true},
+                        width: "100%", height: "100%", title: "DailyDeceased", yaxis: {fixedrange: true},
                         xaxis: {fixedrange: true}
                     }}/>
               </div>

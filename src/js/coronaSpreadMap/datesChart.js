@@ -20,7 +20,7 @@ export default class DateChart extends PureComponent {
         let reqDate = new Date([year, monthNumber[month], day].join("-"));
         return reqDate
     }
-
+     
     render() {
         let {data}=this.props
         let rawData=data["cases_time_series"]
@@ -32,7 +32,7 @@ export default class DateChart extends PureComponent {
                     <div className={"multiple-chart-updown"}>
                         <div className={"chart-title"}> Incremental Line Charts</div>
                         <div>
-                            <IncrementalLineChart data={rawData} changeFormat={this.changeFormat} /> 
+                            <IncrementalLineChart data={rawData} changeFormat={this.changeFormat}/> 
                         </div>
                     </div>
                     <div className={"multiple-chart-updown"}>

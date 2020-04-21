@@ -14,8 +14,10 @@
   color: honeydew;
   align-items: center;
   .must-show{
+    display: flex;
     font-weight: bold;
     padding-right: 10px;
+    justify-content: center;
   }
   .footer-info{
     display: flex;
