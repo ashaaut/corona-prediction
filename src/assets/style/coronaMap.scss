@@ -7,7 +7,6 @@
   align-items: center;
   padding: 2px;
 }
-
 .main-button-container {
   margin-top: 60px;
 }
@@ -54,6 +53,7 @@
   width: 80%;
   display: flex;
   justify-content: center;
+  min-width: 700px;
 }
 .confirmed-color{
   color: orange;

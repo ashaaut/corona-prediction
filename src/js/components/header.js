@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import logo from "./../../assets/images/Corona.png";
 
 
@@ -13,11 +13,11 @@ export default class Header extends Component {
         const {navigateChart, selectedButton} = this.props;
         return (
 
-                
+
           <div className="header shadow">
               <div className="web-title"> Corona Visualizer</div>
               <div className={"button-container"}>
-            
+
               {/* <Link to='stateChart'></Link> */}
 
 
