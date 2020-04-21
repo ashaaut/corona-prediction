@@ -43,7 +43,9 @@
   }
 
   .selected {
-    box-shadow: 0 0.2rem 0.35rem rgba(0, 0, 0, 0.3);
+    background-color: darkgrey;
+    color: white;
+    // box-shadow: 0 0.2rem 0.35rem rgba(0, 0, 0, 0.3);
   }
 }
 .h6{

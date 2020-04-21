@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Link } from 'react-router-dom';
 import logo from "./../../assets/images/Corona.png";
 
 
@@ -11,9 +12,16 @@ export default class Header extends Component {
     render() {
         const {navigateChart, selectedButton} = this.props;
         return (
+
+                
           <div className="header shadow">
               <div className="web-title"> Corona Visualizer</div>
               <div className={"button-container"}>
+            
+              {/* <Link to='stateChart'></Link> */}
+
+
+
                   <button onClick={() => navigateChart("india")}
                           className={selectedButton === "india" ? "selected" : ""}>India Overview
                   </button>

@@ -25,6 +25,17 @@ export default class IndiaChart extends PureComponent {
 
     render() {
         if (!this.state.stateAndStatusData) {
+            // <div class="loading">
+            //     <div class="text-center-middle">
+            //         <div class="lds-ellipsis">
+            //             <div></div>
+            //             <div></div>
+            //             <div></div>
+            //             <div></div>
+            //         </div>
+            //     </div>
+
+            // </div>
             return <div className={"data-loading"}> Loading Data...... </div>
         }
         const data = this.state.stateAndStatusData;

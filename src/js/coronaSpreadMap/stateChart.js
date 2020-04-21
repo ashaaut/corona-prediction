@@ -9,17 +9,35 @@ export default class StateChart extends PureComponent {
     }
 
     render() {
-        let { data } = this.props;
+        const { data } = this.props;
+        let unknown = 0;
+
+        if (data["stateData"]["Unknown"]) {
+            unknown = data["stateData"]["Unknown"]["confirmed"]
+        }
+        delete data["stateData"]["Unknown"]
         let districtNames = Object.keys(data["stateData"])
         let values = districtNames.map(districtName => data["stateData"][districtName]["confirmed"])
+
         return (
             <div className={"app-plot-container"}>
                 <Plot
-                    data={[{ type: 'bar', x: districtNames, y: values },
+                    data={[{
+                        type: 'bar',
+                        x: districtNames,
+                        y: values,
+                        transforms: [{
+                            type: 'sort',
+                            target: 'y',
+                            order: 'descending'
+                        }]
+
+                    },
                     ]} layout={{
                         width: "100%", height: "100%", title: data["stateName"], yaxis: { fixedrange: true },
                         xaxis: { fixedrange: true }
                     }} />
+                {unknown!=0?<div>Awaiting details for {unknown} patients</div>:<div></div>}
 
             </div>
 
