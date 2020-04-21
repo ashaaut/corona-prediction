@@ -1,47 +1,34 @@
 .app{
   width: 100vw;
   height: 100vh;
+  min-width: 700px;
 }
 .footer{
-  width: 100%;
-  display: flex;
+  .footer-container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+  }
   background: #14374d;
   color: honeydew;
-  flex-direction: column;
   align-items: center;
   .must-show{
     font-weight: bold;
     padding-right: 10px;
   }
-  .helpers-git{
+  .footer-info{
     display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    padding-right: 20px;
-  }
-  .maker-info{
-    display: flex;
-    width: 100%;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    min-width: 500px;
   }
-  .helpers-info{
+  .side-by-side{
     display: flex;
-    width: 100%;
-    justify-content: flex-end;
+    justify-content: space-between;
   }
-
-  .multiple-links{
-    display: flex;
-    justify-content: space-evenly;
-    width: 10%;
-  }
-  .multiple-links-data{
-    display: flex;
-    justify-content: space-evenly;
-    width: 16%;
-  }
-  .right-padding{
-    padding-right: 20px;
+  div{
+    margin-right: 5px;
+    margin-left: 5px;
   }
 }
