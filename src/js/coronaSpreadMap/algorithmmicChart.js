@@ -14,7 +14,11 @@ export default class AlgorithmicChart extends PureComponent {
     render() {
         const { chartColor,chartTitle,chartType,xValues,yValues} = this.props;
         const selectedChart = this.state.SelectedScale;
-
+        while(yValues.indexOf("0")!==-1){
+            let index=yValues.indexOf("0")
+            xValues.splice(index,1)
+            yValues.splice(index,1)
+        }
         return (
             <div className={"app-plot-container"}>
                 <div className={"selected-Scale"}>Selected Scale</div>

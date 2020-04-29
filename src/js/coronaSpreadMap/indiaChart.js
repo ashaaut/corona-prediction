@@ -36,7 +36,10 @@ export default class IndiaChart extends PureComponent {
         let confirmed = stateData.map(s => s["confirmed"]);
         let deaths = stateData.map(s => s["deaths"]);
         let recovered = stateData.map(s => s["recovered"]);
-        let chartData =
+        console.log(confirmed)
+        console.log(deaths)
+        console.log(recovered)
+        let chartData=
           [
               {
                   type: 'bar',

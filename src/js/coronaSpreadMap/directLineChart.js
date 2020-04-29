@@ -1,8 +1,9 @@
 import Plot from 'react-plotly.js'
-import React, {PureComponent} from "react";
+import React, { Component } from "react";
+import DateBarChart from './DateBarChart'
 
 
-export default class LineChart extends PureComponent {
+export default class lineChart extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -11,59 +12,34 @@ export default class LineChart extends PureComponent {
 
     render() {
 
-        let {data} = this.props;
+        let { data } = this.props;
         let dates = data.map(e => e["date"])
-        return (
-          <div>
-              <div className={"app-plot-container"}>
-                  <Plot
-                    data={[{
-                        type: 'bar',
-                        x: dates.map(d => this.props.changeFormat(d)),
-                        y: data.map(e => e["dailyconfirmed"]),
-                        marker: {
-                            color: 'orange'
-                        },
-                    },
-                    ]}
-                    layout={{
-                        width: "100%", height: "100%", title: "Daily Confirmed", yaxis: {fixedrange: true},
-                        xaxis: {fixedrange: true}
-                    }}/>
-              </div>
 
-              <div className={"app-plot-container"}>
-                  <Plot
-                    data={[{
-                        type: 'bar',
-                        x: dates.map(d => this.props.changeFormat(d)),
-                        y: data.map(e => e["dailyrecovered"]),
-                        marker: {
-                            color: 'green'
-                        },
-                    },
-                    ]} layout={{
-                      width: "100%", height: "100%", title: "Daily Recovered", yaxis: {fixedrange: true},
-                      xaxis: {fixedrange: true}
-                  }}/>
-              </div>
-              <div className={"app-plot-container"}>
-                  <Plot
-                    data={[{
-                        type: 'bar',
-                        x: dates.map(d => this.props.changeFormat(d)),
-                        y: data.map(e => e["dailydeceased"]),
-                        marker: {
-                            color: 'gray'
-                        },
-                    },
-                    ]}
-                    layout={{
-                        width: "100%", height: "100%", title: "Daily Deceased", yaxis: {fixedrange: true},
-                        xaxis: {fixedrange: true}
-                    }}/>
-              </div>
-          </div>
+        return (
+            <div>
+                    <DateBarChart
+                        chartColor='orange'
+                        chartTitle="Daily Confirmed"
+                        chartType="bar"
+                        xValues={dates.map(d => this.props.changeFormat(d))}
+                        yValues={data.map(e => e["dailyconfirmed"])} />
+        
+
+                    <DateBarChart
+                        chartColor='green'
+                        chartTitle="Daily Recovered" s
+                        chartType="bar"
+                        xValues={dates.map(d => this.props.changeFormat(d))}
+                        yValues={data.map(e => e["dailyrecovered"])} />
+
+                    <DateBarChart
+                        chartColor='gray'
+                        chartTitle="Daily Deceased"
+                        chartType="bar"
+                        xValues={dates.map(d => this.props.changeFormat(d))}
+                        yValues={data.map(e => e["dailydeceased"])} />
+                
+            </div>
         )
 
     }

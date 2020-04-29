@@ -6,6 +6,8 @@ import IndiaChart from '../coronaSpreadMap/indiaChart'
 import Header from './header'
 import Footer from './footer'
 import GeneralDist from "../coronaSpreadMap/genearlDist";
+import IndiaMap from './../coronaSpreadMap/indiaMap'
+import MapChart from './../coronaSpreadMap/mapChart'
 
 class App extends React.Component {
     constructor(props) {
@@ -39,7 +41,7 @@ class App extends React.Component {
         return {
             "generalDist": <GeneralDist data={this.state.data}/>,
             "state": <AllStates data={this.state.data}/>,
-            "india": <IndiaChart/>
+            "india": <IndiaMap/>
         }[this.state.selectedChart]
     }
 
