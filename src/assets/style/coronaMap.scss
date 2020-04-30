@@ -6,6 +6,7 @@
   align-items: center;
   padding: 2px;
 }
+
 .main-button-container {
   margin-top: 60px;
 }
@@ -44,15 +45,10 @@
   align-items: center;
 }
 
-.multiple-chart-sideway, .multiple-chart-sideway-india-map {
+.multiple-chart-sideway {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.multiple-chart-sideway-india-map {
-  width: 80%;
-  align-items: center;
 }
 
 .india-chart {
@@ -74,14 +70,6 @@
   color: gray;
 }
 
-.total-count-div {
-  display: flex;
-  flex-wrap: wrap;
-  width: 20%;
-  height: 100%;
-  justify-content: flex-start;
-}
-
 .chart-selector-container {
   display: flex;
   flex-direction: column;
@@ -91,6 +79,12 @@
     justify-content: space-between;
     padding: 20px;
   }
+}
+
+.total-count-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .scale-selector {
@@ -112,7 +106,6 @@
   justify-content: flex-start;
   width: 100%;
 }
-
-.india-map {
-  width: 75%;
+.india-map{
+  width: 100%;
 }

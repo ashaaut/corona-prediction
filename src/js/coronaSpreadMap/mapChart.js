@@ -55,8 +55,6 @@ class MapChart extends Component {
         <Geographies geography={data}>
           {({ geographies }) =>
             geographies.map(geo => {
-              console.log(geo.id)
-              console.log(stateData.map(s=>s["statecode"]))
               const current = stateData.filter(statedata => statedata["statecode"] == geo.id);
 
               return (
@@ -65,7 +63,7 @@ class MapChart extends Component {
                   geography={geo}
                   style={style}
                   fill={current[0] ? colorScale(current[0].confirmed) : DEFAULT_COLOR}
-                
+
                   onMouseEnter={() => onMouseEnter(geo, current)}
                   onMouseLeave={() => onMouseLeave()}
 

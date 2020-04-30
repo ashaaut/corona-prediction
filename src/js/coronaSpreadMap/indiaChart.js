@@ -73,15 +73,12 @@ export default class IndiaChart extends PureComponent {
         return (
           <div className={"specific-chart-container"}>
               <div className={"main-title"}> India Overview</div>
-              <div className={"multiple-chart-sideway-india-map"}>
-                  <div className={"total-count-div"}>
-                      <div className={"chart-title confirmed-color"}> Total Confirmed:{total["confirmed"]}</div>
-                      <div className={"chart-title recovered-color"}> Total Recovered:{total["recovered"]}</div>
-                      <div className={"chart-title deaths-color"}> Total Deaths:{total["deaths"]}</div>
-                  </div>
-                  <IndiaMap stateData={stateData}/>
+              <div className={"total-count-div"}>
+                  <div className={"chart-title confirmed-color"}> Total Confirmed:{total["confirmed"]}</div>
+                  <div className={"chart-title recovered-color"}> Total Recovered:{total["recovered"]}</div>
+                  <div className={"chart-title deaths-color"}> Total Deaths:{total["deaths"]}</div>
               </div>
-
+              <IndiaMap stateData={stateData}/>
               <div className="app-plot-container india-chart">
                   <Plot
                     data={chartData}
