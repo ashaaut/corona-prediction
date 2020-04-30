@@ -1,81 +1,56 @@
-import React, { Component,useState } from 'react';
-import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
-import data from './../../data/indiaMapData.json'
+import React, { Component } from 'react';
 import ReactTooltip from "react-tooltip";
+import MapChart from './mapChart'
+
 
 class IndiaMap extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      geoStateName: ""
+      geoStateData: "",
     }
-
+    this.onMouseEnter = this.onMouseEnter.bind(this)
+    this.onMouseLeave = this.onMouseLeave.bind(this)
   }
-  onMouseEnter(geo) {
+
+  onMouseEnter(geo, current) {
+
     this.setState({
-      geoStateName: geo.properties.name
+      geoStateData: `${geo.properties.name},
+        Confirmed:${current[0]['confirmed']},
+        Recovered: ${current[0]["recovered"]},
+        Deaths:${current[0]["deaths"]} `
     });
   };
+
   onMouseLeave() {
     this.setState({
-      geoStateName: ""
-    });
+      geoStateData: ""
+    })
   };
 
-  render() {
-  
-    const PROJECTION_CONFIG = {
-      scale: 350,
-      center: [78.9629, 20.5937]
-    };
 
-    let style={
-      default: {
-        fill: '#808080',
-        outline: "none"
-      },
-      hover: {
-        fill: "#F53",
-        outline: "none"
-      },
-      pressed: {
-        fill: "#E42",
-        outline: "none"
-      }
-    }
-
-
+  handleContent(geoStateData) {
+    let a = geoStateData.split(",")
+    console.log(a)
     return (
       <div>
-        
-    <ReactTooltip>{this.state.geoStateName}</ReactTooltip>
-        <ComposableMap
-          projectionConfig={PROJECTION_CONFIG}
-          projection="geoMercator"
-          width={600}
-          height={220}
-         
-          data-tip=""
-          >
-          <Geographies geography={data}>
-            {({ geographies }) =>
-              geographies.map(geo => {
-                return (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    style={style}
-                    onMouseEnter={() => this.onMouseEnter(geo)}
-                    onMouseLeave={() => this.onMouseLeave()}
-                  
-                  />
-                );
-              })
-            }
-          </Geographies>
+        {a.map(s =>{s})}
+      </div>
 
-        </ComposableMap>
-      
+    )
+  }
+  render() {
+    const { stateData } = this.props
+    return (
+      <div className="app-plot-container india-chart">
+
+        <ReactTooltip  classname="tooltip"  multiline={true}>
+          {this.state.geoStateData}
+          {/* {this.handleContent(this.state.geoStateData)} */}
+        </ReactTooltip>
+        <MapChart onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} stateData={stateData} />
+        
       </div>
 
     )

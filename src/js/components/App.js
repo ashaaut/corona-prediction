@@ -41,7 +41,7 @@ class App extends React.Component {
         return {
             "generalDist": <GeneralDist data={this.state.data}/>,
             "state": <AllStates data={this.state.data}/>,
-            "india": <IndiaMap/>
+            "india": <IndiaChart/>
         }[this.state.selectedChart]
     }
 

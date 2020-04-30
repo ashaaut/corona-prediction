@@ -1,6 +1,7 @@
 import Plot from 'react-plotly.js'
 import React, {PureComponent} from "react";
 import DateChart from './datesChart'
+import IndiaMap from './indiaMap'
 
 export default class IndiaChart extends PureComponent {
     constructor(props) {
@@ -36,9 +37,7 @@ export default class IndiaChart extends PureComponent {
         let confirmed = stateData.map(s => s["confirmed"]);
         let deaths = stateData.map(s => s["deaths"]);
         let recovered = stateData.map(s => s["recovered"]);
-        console.log(confirmed)
-        console.log(deaths)
-        console.log(recovered)
+      
         let chartData=
           [
               {
@@ -80,6 +79,7 @@ export default class IndiaChart extends PureComponent {
                   <div className={"chart-title recovered-color"}> Total Recovered:{total["recovered"]}</div>
                   <div className={"chart-title deaths-color"}> Total Deaths:{total["deaths"]}</div>
               </div>
+              <IndiaMap stateData={stateData}/>
               <div className="app-plot-container india-chart">
                   <Plot
                     data={chartData}
@@ -88,6 +88,7 @@ export default class IndiaChart extends PureComponent {
                         xaxis: {fixedrange: true}
                     }} style={{width: "100%", height: "100%"}}/>
               </div>
+              
               <DateChart data={data}/>
           </div>
 
