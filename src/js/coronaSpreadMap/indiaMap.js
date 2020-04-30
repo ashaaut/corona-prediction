@@ -32,7 +32,6 @@ class IndiaMap extends Component {
 
   handleContent(geoStateData) {
     let a = geoStateData.split(",")
-    console.log(a)
     return (
       <div>
         {a.map(s =>{s})}
@@ -43,14 +42,14 @@ class IndiaMap extends Component {
   render() {
     const { stateData } = this.props
     return (
-      <div className="app-plot-container india-chart">
+      <div className="app-plot-container india-map">
 
         <ReactTooltip  classname="tooltip"  multiline={true}>
           {this.state.geoStateData}
           {/* {this.handleContent(this.state.geoStateData)} */}
         </ReactTooltip>
         <MapChart onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} stateData={stateData} />
-        
+
       </div>
 
     )

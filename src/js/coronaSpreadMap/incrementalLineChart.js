@@ -27,8 +27,6 @@ export default class IncrementalLineChart extends PureComponent {
                     chartType="scatter"
                     xValues={dates.map(d => this.props.changeFormat(d))}
                     yValues={data.map(e => e["totalconfirmed"])} />
-
-
                 <AlgorithmicChart chartColor="green"
                     chartTitle="Total Recovered"
                     chartType="scatter"

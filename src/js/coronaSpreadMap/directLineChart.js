@@ -1,6 +1,6 @@
 import Plot from 'react-plotly.js'
-import React, { Component } from "react";
-import DateBarChart from './DateBarChart'
+import React, {Component} from "react";
+import AlgorithmicChart from "./algorithmmicChart";
 
 
 export default class lineChart extends Component {
@@ -12,34 +12,34 @@ export default class lineChart extends Component {
 
     render() {
 
-        let { data } = this.props;
+        let {data} = this.props;
         let dates = data.map(e => e["date"])
 
         return (
-            <div>
-                    <DateBarChart
-                        chartColor='orange'
-                        chartTitle="Daily Confirmed"
-                        chartType="bar"
-                        xValues={dates.map(d => this.props.changeFormat(d))}
-                        yValues={data.map(e => e["dailyconfirmed"])} />
-        
+          <div>
+              <AlgorithmicChart
+                chartColor='orange'
+                chartTitle="Daily Confirmed"
+                chartType="bar"
+                xValues={dates.map(d => this.props.changeFormat(d))}
+                yValues={data.map(e => e["dailyconfirmed"])}/>
 
-                    <DateBarChart
-                        chartColor='green'
-                        chartTitle="Daily Recovered" s
-                        chartType="bar"
-                        xValues={dates.map(d => this.props.changeFormat(d))}
-                        yValues={data.map(e => e["dailyrecovered"])} />
 
-                    <DateBarChart
-                        chartColor='gray'
-                        chartTitle="Daily Deceased"
-                        chartType="bar"
-                        xValues={dates.map(d => this.props.changeFormat(d))}
-                        yValues={data.map(e => e["dailydeceased"])} />
-                
-            </div>
+              <AlgorithmicChart
+                chartColor='green'
+                chartTitle="Daily Recovered" s
+                chartType="bar"
+                xValues={dates.map(d => this.props.changeFormat(d))}
+                yValues={data.map(e => e["dailyrecovered"])}/>
+
+              <AlgorithmicChart
+                chartColor='gray'
+                chartTitle="Daily Deceased"
+                chartType="bar"
+                xValues={dates.map(d => this.props.changeFormat(d))}
+                yValues={data.map(e => e["dailydeceased"])}/>
+
+          </div>
         )
 
     }
