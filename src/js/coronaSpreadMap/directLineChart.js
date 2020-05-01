@@ -27,7 +27,7 @@ export default class lineChart extends Component {
 
               <AlgorithmicChart
                 chartColor='green'
-                chartTitle="Daily Recovered" s
+                chartTitle="Daily Recovered" 
                 chartType="bar"
                 xValues={dates.map(d => this.props.changeFormat(d))}
                 yValues={data.map(e => e["dailyrecovered"])}/>

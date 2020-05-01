@@ -39,7 +39,7 @@ export default class AllStateCharts extends PureComponent {
 
         return (
             <div className={"specific-chart-container"}>
-                <div className={"main-title"}> State Charts</div>
+                <div className={"main-title"}> State Chart</div>
                 <div className={"chart-selector-container"}>
                     <div className={"chart-selector"}>
                         <div className={"chart-title"}>Selected Chart</div>
@@ -56,13 +56,6 @@ export default class AllStateCharts extends PureComponent {
                                 stateData: selectedData
                             }} />
                     </div>
-                </div>
-                <div className={"main-title"}> All State Charts</div>
-                <div className={"multiple-chart-sideway"}>
-                    {allStateNames.map(stateName => <StateChart
-                        key={stateName}
-                        data={{ stateName: stateName, stateData: data[stateName]["districtData"] }} />)}
-
                 </div>
             </div>
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactTooltip from "react-tooltip";
 import MapChart from './mapChart'
+import ColorScale from './colorScale'
 
 
 class IndiaMap extends Component {
@@ -30,26 +31,34 @@ class IndiaMap extends Component {
   };
 
 
-  handleContent(geoStateData) {
-    let a = geoStateData.split(",")
-    return (
-      <div>
-        {a.map(s =>{s})}
-      </div>
-
-    )
-  }
   render() {
-    const { stateData } = this.props
+    const {stateData}  = this.props
+    const COLOR_RANGE = [
+      '#ffedea',
+      '#ffcec5',
+      '#ffad9f',
+      '#ff8a75',
+      '#ff5533',
+      '#e2492d',
+      '#be3d26',
+      '#9a311f',
+      '#782618'
+    ];
+    const gradientData = {
+      fromColor: COLOR_RANGE[0],
+      toColor: COLOR_RANGE[COLOR_RANGE.length - 1],
+      min: 0,
+      max:stateData.reduce((max,item)=>(parseInt(item.confirmed)>max?item.confirmed:max),0)
+    };
+
     return (
       <div className="app-plot-container india-map">
 
         <ReactTooltip  classname="tooltip"  multiline={true}>
           {this.state.geoStateData}
-          {/* {this.handleContent(this.state.geoStateData)} */}
         </ReactTooltip>
-        <MapChart onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} stateData={stateData} />
-
+        <MapChart onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} stateData={stateData} COLOR_RANGE={COLOR_RANGE} />
+        <ColorScale data={gradientData}/>
       </div>
 
     )

@@ -8,18 +8,7 @@ class MapChart extends Component {
   }
   render() {
 
-    const { onMouseEnter, onMouseLeave, stateData } = this.props
-    const COLOR_RANGE = [
-      '#ffedea',
-      '#ffcec5',
-      '#ffad9f',
-      '#ff8a75',
-      '#ff5533',
-      '#e2492d',
-      '#be3d26',
-      '#9a311f',
-      '#782618'
-    ];
+    const { onMouseEnter, onMouseLeave, stateData,COLOR_RANGE } = this.props
     const DEFAULT_COLOR = '#808080';
     const colorScale = scaleQuantile()
       .domain(stateData.map(d => parseInt(d.confirmed)))
