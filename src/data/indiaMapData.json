@@ -354,7 +354,7 @@
         },
         {
           "type": "Polygon",
-          "id": "TS",
+          "id": "TG",
           "properties": {
             "name": "Telangana"
           },
@@ -406,7 +406,7 @@
         },
         {
           "type": "Polygon",
-          "id": "UK",
+          "id": "UT",
           "properties": {
             "name": "Uttarakhand"
           },

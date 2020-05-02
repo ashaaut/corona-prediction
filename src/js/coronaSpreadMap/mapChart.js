@@ -6,9 +6,13 @@ class MapChart extends Component {
   constructor(props) {
     super(props);
   }
+  getStateId(apiId) {
+    let renameMap = { "OD": "OR" }
+    return Object.keys(renameMap).includes(apiId) ? renameMap[apiId] : apiId
+  }
   render() {
 
-    const { onMouseEnter, onMouseLeave, stateData,COLOR_RANGE } = this.props
+    const { onMouseEnter, onMouseLeave, stateData, COLOR_RANGE } = this.props
     const DEFAULT_COLOR = '#808080';
     const colorScale = scaleQuantile()
       .domain(stateData.map(d => parseInt(d.confirmed)))
@@ -44,8 +48,8 @@ class MapChart extends Component {
         <Geographies geography={data}>
           {({ geographies }) =>
             geographies.map(geo => {
-              const current = stateData.filter(statedata => statedata["statecode"] == geo.id);
-
+              let newId = this.getStateId(geo.id)
+              const current = stateData.filter(s => s["statecode"] == newId);
               return (
                 <Geography
                   key={geo.rsmKey}
