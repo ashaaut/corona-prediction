@@ -16,7 +16,9 @@ export default class lineChart extends Component {
         let dates = data.map(e => e["date"])
 
         return (
+          
           <div>
+            
               <AlgorithmicChart
                 chartColor='orange'
                 chartTitle="Daily Confirmed"

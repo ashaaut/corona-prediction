@@ -72,6 +72,7 @@ export default class IndiaChart extends PureComponent {
 
         return (
           <div className={"specific-chart-container"}>
+             
               <div className={"main-title"}> India Overview</div>
               <div className={"total-count-div"}>
                   <div className={"chart-title confirmed-color"}> Total Confirmed:{total["confirmed"]}</div>

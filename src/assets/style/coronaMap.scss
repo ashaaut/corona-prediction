@@ -117,3 +117,18 @@
 .fill {
   flex: 1;
 }
+.warning-div{
+
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  width: 300px;
+  height: 40px;
+  margin-left: 40%;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 3px;
+  color:#ffb366 ;
+  background-color: rgb(248, 248, 113);
+  border: 2px solid  #fae279;
+}
