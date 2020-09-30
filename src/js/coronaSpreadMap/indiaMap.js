@@ -33,6 +33,7 @@ class IndiaMap extends Component {
 
   render() {
     const {stateData}  = this.props
+    // delete stateData[0]
     const COLOR_RANGE = [
       '#ffedea',
       '#ffcec5',

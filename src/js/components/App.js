@@ -2,7 +2,7 @@ import React from "react";
 import {hot} from 'react-hot-loader/root';
 import data from "./../../data/data.json"
 import AllStates from '../coronaSpreadMap/allStatesChart'
-import IndiaChart from '../coronaSpreadMap/indiaChart'
+import IndiaData from '../coronaSpreadMap/indiaData'
 import Header from './header'
 import Footer from './footer'
 import GeneralDist from "../coronaSpreadMap/genearlDist";
@@ -41,7 +41,7 @@ class App extends React.Component {
         return {
             "generalDist": <GeneralDist data={this.state.data}/>,
             "state": <AllStates data={this.state.data}/>,
-            "india": <IndiaChart/>
+            "india": <IndiaData/>
         }[this.state.selectedChart]
     }
 
