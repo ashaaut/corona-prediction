@@ -7,10 +7,10 @@ export default class IndiaData extends PureComponent {
     constructor() {
         super();
         this.state = {
-            
+
             stateAndStatusData: undefined,
             selected: "Map",
-            
+
         };
     }
 
@@ -27,7 +27,7 @@ export default class IndiaData extends PureComponent {
             .catch(err => console.log('error', err))
     }
     changeSelected(e) {
-        this.setState({  stateAndStatusData:this.state.stateAndStatusData,selected: e.target.value})
+        this.setState({ stateAndStatusData: this.state.stateAndStatusData, selected: e.target.value })
     }
 
     render() {
@@ -39,7 +39,6 @@ export default class IndiaData extends PureComponent {
         let total = stateData["0"]
         return (
             <div className={"specific-chart-container"}>
-
                 <div className={"main-title"}> India Overview</div>
                 <div className={"total-count-div"}>
                     <div className={" count-div confirmed-color"}>
@@ -61,18 +60,18 @@ export default class IndiaData extends PureComponent {
                 </div>
                 <div className={"chart-selector-container"}>
                     <div className={"chart-selector"}>
-                
-                <div className={"chart-title"}>Selected Chart</div>
-                <select name="select" onChange={(e) => this.changeSelected(e)} value={this.state.selected}>
-                    <option value="Map">Map</option>
-                    <option value="Bar Chart">Bar Chart</option>
-                </select>
+
+                        <div className={"chart-title"}>Selected Chart</div>
+                        <select name="select" onChange={(e) => this.changeSelected(e)} value={this.state.selected}>
+                            <option value="Map">Map</option>
+                            <option value="Bar Chart">Bar Chart</option>
+                        </select>
+                    </div>
                 </div>
-                </div>
-                {this.state.selected=="Map"?<IndiaMap stateData={stateData}/>:<IndiaChart />
-}
-                                
-                
+                {this.state.selected == "Map" ? <IndiaMap stateData={stateData} /> : <IndiaChart />
+                }
+
+
                 {/* <DateChart data={data} /> */}
             </div>
 

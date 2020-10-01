@@ -4,10 +4,10 @@ import React, { PureComponent } from "react";
 export default class IndiaChart extends PureComponent {
     constructor(props) {
         super(props);
-        this.state={
-            stateAndStatusData:undefined
+        this.state = {
+            stateAndStatusData: undefined
         }
-        
+
     }
     componentWillMount() {
         fetch('https://api.covid19india.org/data.json', {
@@ -33,7 +33,7 @@ export default class IndiaChart extends PureComponent {
         let confirmed = stateData.map(s => s["confirmed"]);
         let deaths = stateData.map(s => s["deaths"]);
         let recovered = stateData.map(s => s["recovered"]);
-    
+        let active = stateData.map(s => s["active"]);
         let chartData =
             [
                 {
@@ -42,7 +42,7 @@ export default class IndiaChart extends PureComponent {
                     y: confirmed,
                     name: "Confirmed",
                     marker: {
-                        color: 'orange'
+                        color: 'red'
                     },
                 },
 
@@ -59,6 +59,16 @@ export default class IndiaChart extends PureComponent {
                 {
                     type: 'bar',
                     x: stateNames,
+                    y: active,
+                    name: "active",
+                    marker: {
+                        color: 'blue'
+                    },
+                },
+
+                {
+                    type: 'bar',
+                    x: stateNames,
                     y: deaths,
                     name: "Deaths",
                     marker: {
@@ -69,8 +79,7 @@ export default class IndiaChart extends PureComponent {
 
         return (
             <div className={"specific-chart-container"}>
-
-                <div className="app-plot-container india-chart">
+                <div className="app-plot-container bar-chart">
                     <Plot
                         data={chartData}
                         layout={{
