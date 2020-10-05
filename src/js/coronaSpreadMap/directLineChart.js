@@ -14,33 +14,56 @@ export default class lineChart extends Component {
 
         let {data} = this.props;
         let dates = data.map(e => e["date"])
+        console.log(data)
+        let dailyConfirmed=data.map(e => e["dailyconfirmed"]);
+        let dailyRecovered=data.map(e => e["dailyrecovered"]);
+        let dailyDeceased= data.map(e => e["dailydeceased"]);
+        let newdates=dates.map(d => this.props.changeFormat(d));
+        while (dailyConfirmed.indexOf("0") !== -1) {
+          let index = dailyConfirmed.indexOf("0");
+          newdates.splice(index, 1);
+          dailyConfirmed.splice(index, 1);
+          dailyRecovered.splice(index,1);
+          dailyDeceased.splice(index,1);
+      }
+        let lineChartData =
+            [
+                {
+                    type: 'scatter',
+                    x: newdates,
+                    y: dailyConfirmed,
+                    name: "Confirmed",
+                    marker: {
+                        color: 'red'
+                    },
+                },
+
+                {
+                    type: 'scatter',
+                    x: newdates,
+                    y: dailyRecovered,
+                    name: "Recovered",
+                    marker: {
+                        color: 'green'
+                    },
+
+                },
+
+                {
+                    type: 'scatter',
+                    x: newdates,
+                    y:dailyDeceased,
+                    name: "Deaths",
+                    marker: {
+                        color: 'gray'
+                    },
+                }
+            ];
 
         return (
           
           <div>
-            
-              <AlgorithmicChart
-                chartColor='orange'
-                chartTitle="Daily Confirmed"
-                chartType="bar"
-                xValues={dates.map(d => this.props.changeFormat(d))}
-                yValues={data.map(e => e["dailyconfirmed"])}/>
-
-
-              <AlgorithmicChart
-                chartColor='green'
-                chartTitle="Daily Recovered" 
-                chartType="bar"
-                xValues={dates.map(d => this.props.changeFormat(d))}
-                yValues={data.map(e => e["dailyrecovered"])}/>
-
-              <AlgorithmicChart
-                chartColor='gray'
-                chartTitle="Daily Deceased"
-                chartType="bar"
-                xValues={dates.map(d => this.props.changeFormat(d))}
-                yValues={data.map(e => e["dailydeceased"])}/>
-
+            <AlgorithmicChart lineChartData={lineChartData} />
           </div>
         )
 

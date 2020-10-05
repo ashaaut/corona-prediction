@@ -20,24 +20,54 @@ export default class IncrementalLineChart extends PureComponent {
     render() {
         let { data } = this.props;
         let dates = data.map(e => e["date"]);
+        let newdates=dates.map(d => this.props.changeFormat(d));
+        let confirmed=data.map(e => e["totalconfirmed"]);
+        let recovered=data.map(e => e["totalrecovered"]);
+        let deceased= data.map(e => e["totaldeceased"]);
+        while (confirmed.indexOf("0") !== -1) {
+            let index = confirmed.indexOf("0");
+            newdates.splice(index, 1);
+            confirmed.splice(index, 1);
+            deceased.splice(index,1);
+            recovered.splice(index,1);
+        }
+        let lineChartData =
+            [
+                {
+                    type: 'scatter',
+                    x: newdates,
+                    y: confirmed,
+                    name: "Confirmed",
+                    marker: {
+                        color: 'red'
+                    },
+                },
+
+                {
+                    type: 'scatter',
+                    x: newdates,
+                    y: recovered,
+                    name: "Recovered",
+                    marker: {
+                        color: 'green'
+                    },
+
+                },
+
+                {
+                    type: 'scatter',
+                    x: newdates,
+                    y:deceased,
+                    name: "Deaths",
+                    marker: {
+                        color: 'gray'
+                    },
+                }
+            ];
+
         return (
             <div>
-                <AlgorithmicChart chartColor="orange"
-                    chartTitle="Total Confirmed"
-                    chartType="scatter"
-                    xValues={dates.map(d => this.props.changeFormat(d))}
-                    yValues={data.map(e => e["totalconfirmed"])} />
-                <AlgorithmicChart chartColor="green"
-                    chartTitle="Total Recovered"
-                    chartType="scatter"
-                    xValues={dates.map(d => this.props.changeFormat(d))}
-                    yValues={data.map(e => e["totalrecovered"])} />
-
-                <AlgorithmicChart chartColor="gray"
-                    chartTitle="Total Deceased"
-                    chartType="scatter"
-                    xValues={dates.map(d => this.props.changeFormat(d))}
-                    yValues={data.map(e => e["totaldeceased"])} />
+                <AlgorithmicChart lineChartData={lineChartData} />
             </div>
 
         )

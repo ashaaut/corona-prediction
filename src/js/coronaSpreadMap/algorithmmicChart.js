@@ -13,14 +13,9 @@ export default class AlgorithmicChart extends PureComponent {
     }
 
     render() {
-        const {chartColor, chartTitle, chartType, xValues, yValues} = this.props;
-        console.log(xValues)
+        const {lineChartData} = this.props;
         const selectedChart = this.state.SelectedScale;
-        while (yValues.indexOf("0") !== -1) {
-            let index = yValues.indexOf("0");
-            xValues.splice(index, 1);
-            yValues.splice(index, 1);
-        }
+        
         return (
           <div className={"app-plot-container"}>
               <div className={"tool-bar-section"}>
@@ -34,18 +29,9 @@ export default class AlgorithmicChart extends PureComponent {
                   </div>
               </div>
               <Plot
-                data={[{
-                    type: chartType,
-                    x: xValues,
-                    y: yValues,
-                    marker: {
-                        color: chartColor
-                    },
-                    line: {shape: 'spline'}
-                },
-                ]}
+                data={lineChartData}
                 layout={{
-                    width: "100%", height: "100%", title: chartTitle,
+                    width: "100%", height: "100%",
                     yaxis: {
                         type: selectedChart,
                         fixedrange: true
