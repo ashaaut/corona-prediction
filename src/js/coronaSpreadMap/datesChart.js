@@ -30,7 +30,6 @@ export default class DateChart extends PureComponent {
         return (
             <div>
                 <div className={"main-title"}> Date Specific Charts</div>
-                <div className="warning-div">! Warning: Data Not In Sync</div>
                 <div className={"multiple-chart-sideway"}>
                     <div className={"multiple-chart-updown"}>
                         <div className={"chart-title"}> Incremental Line Charts</div>
