@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-// import DateChart from './datesChart'
+import DateChart from './datesChart'
 import IndiaChart from './indiaChart'
 import IndiaMap from './indiaMap'
 
@@ -72,7 +72,7 @@ export default class IndiaData extends PureComponent {
                 }
 
 
-                {/* <DateChart data={data} /> */}
+                <DateChart data={data} />
             </div>
 
         )

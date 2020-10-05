@@ -15,7 +15,7 @@ export default class DateChart extends PureComponent {
         let dateList = date.split(" ");
         let day = dateList[0];
         let month = dateList[1];
-        let monthNumber = { January: 1, February: 2, March: 3, April: 4, May: 5 }
+        let monthNumber = { January: 1, February: 2, March: 3, April: 4, May: 5,June:6,July:7,August:8,September:9,October:10,Novenmber:11,December:12 }
         let year = "2020"
         let reqDate = new Date([year, monthNumber[month], day].join("-"));
         return reqDate
@@ -23,6 +23,8 @@ export default class DateChart extends PureComponent {
      
     render() {
         let {data}=this.props
+        // console.log("date")
+        // console.log(data)
         let rawData=data["cases_time_series"]
   
         return (

@@ -14,6 +14,7 @@ export default class AlgorithmicChart extends PureComponent {
 
     render() {
         const {chartColor, chartTitle, chartType, xValues, yValues} = this.props;
+        console.log(xValues)
         const selectedChart = this.state.SelectedScale;
         while (yValues.indexOf("0") !== -1) {
             let index = yValues.indexOf("0");
