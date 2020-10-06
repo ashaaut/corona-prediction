@@ -30,25 +30,26 @@ export default class DateChart extends PureComponent {
         return (
             <div>
                 <div className={"main-title"}> Date Specific Charts</div>
-                <div className={"multiple-chart-sideway"}>
-                    <div className={"multiple-chart-updown"}>
+        
+                
+                    {/* <div className={"multiple-chart-updown"}> */}
                         <div className={"chart-title"}> Incremental Line Charts</div>
                         <div>
                             <IncrementalLineChart data={rawData} changeFormat={this.changeFormat}/> 
                         </div>
-                    </div>
-                    <div className={"multiple-chart-updown"}>
+                    {/* </div> */}
+                    {/* <div className={"multiple-chart-updown"}> */}
                         <div className={"chart-title"}> Date Patients Count</div>
                         <div>
                             <LineChart data={rawData} changeFormat={this.changeFormat} /> 
 
-                        </div>
+                        {/* </div> */}
                     </div>
 
 
                 </div>
 
-            </div>
+        
 
         )
 

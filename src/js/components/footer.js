@@ -4,7 +4,7 @@ export default class Header extends Component {
     render() {
         return (
             <div className="footer">
-                <div className={"main-title"}>Corona Visualizer unofficial</div>
+                <div className={"main-title"}>Corona Visualizer Unofficial</div>
                 <div className={"footer-container"}>
                     <div className={"footer-info"}>
                         <div className={"side-by-side"}>

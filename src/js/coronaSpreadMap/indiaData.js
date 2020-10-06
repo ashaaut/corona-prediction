@@ -64,7 +64,7 @@ export default class IndiaData extends PureComponent {
                         <div className={"chart-title"}>Selected Chart</div>
                         <select name="select" onChange={(e) => this.changeSelected(e)} value={this.state.selected}>
                             <option value="Map">Map</option>
-                            <option value="Bar Chart">Bar Chart</option>
+                            <option value="Bar Chart">Bar</option>
                         </select>
                     </div>
                 </div>

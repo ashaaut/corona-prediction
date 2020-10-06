@@ -32,7 +32,7 @@ class IndiaMap extends Component {
 
 
   render() {
-    const {stateData}  = this.props
+    const { stateData } = this.props
     // delete stateData[0]
     const COLOR_RANGE = [
       '#ffedea',
@@ -49,17 +49,18 @@ class IndiaMap extends Component {
       fromColor: COLOR_RANGE[0],
       toColor: COLOR_RANGE[COLOR_RANGE.length - 1],
       min: 0,
-      max:stateData.reduce((max,item)=>(parseInt(item.confirmed)>max?item.confirmed:max),0)
+      max: stateData.reduce((max, item) => (parseInt(item.confirmed) > max ? item.confirmed : max), 0)
     };
 
     return (
       <div className="app-plot-container india-map">
+        <div className={"chart-title"}>Choropleth Map</div>
 
-        <ReactTooltip  classname="tooltip"  multiline={true}>
+        <ReactTooltip classname="tooltip" multiline={true}>
           {this.state.geoStateData}
         </ReactTooltip>
         <MapChart onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} stateData={stateData} COLOR_RANGE={COLOR_RANGE} />
-        <ColorScale data={gradientData}/>
+        <ColorScale data={gradientData} />
       </div>
 
     )

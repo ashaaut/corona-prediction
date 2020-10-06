@@ -66,7 +66,7 @@ export default class IncrementalLineChart extends PureComponent {
             ];
 
         return (
-            <div>
+            <div className="specific-chart-container">
                 <AlgorithmicChart lineChartData={lineChartData} />
             </div>
 
