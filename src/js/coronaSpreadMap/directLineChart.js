@@ -13,12 +13,10 @@ export default class lineChart extends Component {
 		console.log(data);
 		let dates = data.map((e) => e['dateymd']);
 		console.log('dates', dates);
-		// console.log('direct', data);
 		let dailyConfirmed = data.map((e) => e['dailyconfirmed']);
 		let dailyRecovered = data.map((e) => e['dailyrecovered']);
 		let dailyDeceased = data.map((e) => e['dailydeceased']);
 		let newdates = dates.map((d) => this.props.changeFormat(d));
-		// console.log(newdates);
 		while (dailyConfirmed.indexOf('0') !== -1) {
 			let index = dailyConfirmed.indexOf('0');
 			newdates.splice(index, 1);
