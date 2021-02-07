@@ -80,8 +80,7 @@ export default class StateChart extends PureComponent {
             <Plot
                 data={stateChartData}
                  layout={{
-                     barmode:'stack',width: "100%", height: "100%", title: data["stateName"], yaxis: { fixedrange: true },
-                    xaxis: { fixedrange: true }
+                     barmode:'stack',width: "100%", height: "100%", title: data["stateName"]
                 }} />
             {unknown!=0?<div>Awaiting details for {unknown} patients</div>:<div></div>}
 

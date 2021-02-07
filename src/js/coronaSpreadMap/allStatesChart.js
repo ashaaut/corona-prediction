@@ -45,7 +45,7 @@ export default class AllStateCharts extends PureComponent {
                         <div className={"chart-title"}>Selected Chart</div>
                         <select name="select" onChange={(e) => this.changeSelected(e)} value={this.state.selected}>
                             {allStateNames.map(function (n) {
-                                return (<option value={n} key={`option-${n}`}>{n}</option>);
+                                return (<option value={n} key={`option-${n}`} id={`option-${n}`}>{n}</option>);
                             })}
                         </select>
                     </div>

@@ -83,10 +83,9 @@ export default class IndiaChart extends PureComponent {
                     <Plot
                         data={chartData}
                         layout={{
-                            barmode: 'stack', title: "INDIA", yaxis: { fixedrange: true },
-                            xaxis: { fixedrange: true }
+                            barmode: 'stack', title: "INDIA"
                         }} style={{ width: "100%", height: "100%" }}
-                        config= {{scrollZoom: true}}/>
+                        />
                 </div>
             </div>
 

@@ -6,8 +6,14 @@ import IndiaData from '../coronaSpreadMap/indiaData'
 import Header from './header'
 import Footer from './footer'
 import GeneralDist from "../coronaSpreadMap/genearlDist";
-import IndiaMap from './../coronaSpreadMap/indiaMap'
-import MapChart from './../coronaSpreadMap/mapChart'
+
+import { 
+    BrowserRouter as Router, 
+    Route, 
+    Link, 
+    Switch 
+} from 'react-router-dom'; 
+
 
 class App extends React.Component {
     constructor(props) {

@@ -34,11 +34,7 @@ export default class AlgorithmicChart extends PureComponent {
                         width: "100%", height: "100%",
                         yaxis: {
                             type: selectedChart,
-                            fixedrange: true
-                        },
-                        xaxis: {
-                            fixedrange: true
-                        },
+                        }
 
                     }} />
             </div>

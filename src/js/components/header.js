@@ -15,10 +15,10 @@ export default class Header extends Component {
                     <button onClick={() => navigateChart("india")}
                         className={selectedButton === "india" ? "selected" : ""}>India Overview
                   </button>
-                    <button onClick={() => navigateChart("state")}
+                    <button id="test-state-data" onClick={() => navigateChart("state")}
                         className={selectedButton === "state" ? "selected" : ""}>State Data
                   </button>
-                    <button onClick={() => navigateChart("generalDist")}
+                    <button id="test-general-dist" onClick={() => navigateChart("generalDist")}
                         className={selectedButton === "generalDist" ? "selected" : ""}>General Dist.
                   </button>
                 </div>
