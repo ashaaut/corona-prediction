@@ -10,7 +10,7 @@ export default class IndiaChart extends PureComponent {
 
     }
     componentWillMount() {
-        fetch('https://api.covid19india.org/data.json', {
+        fetch('https://data.covid19india.org/data.json', {
             cors: 'no-cors',
             method: 'GET',
             redirect: 'follow',

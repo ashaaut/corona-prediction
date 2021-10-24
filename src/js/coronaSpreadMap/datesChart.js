@@ -14,7 +14,6 @@ export default class DateChart extends PureComponent {
 		let month = dateList[1];
 		let year = dateList[0];
 		let reqDate = new Date([year, month, day].join('-'));
-		console.log('date', reqDate);
 		return reqDate;
 	}
 

@@ -6,12 +6,12 @@ export default class AllStateCharts extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            selected: "Maharashtra",
+            selected: "MH",
             stateData: undefined
         };
     }
     componentWillMount() {
-        fetch('https://api.covid19india.org/state_district_wise.json', {
+        fetch('https://data.covid19india.org/v4/min/data.min.json', {
             cors: 'no-cors',
             method: 'GET',
             redirect: 'follow',
@@ -28,12 +28,15 @@ export default class AllStateCharts extends PureComponent {
     }
 
     render() {
+        console.log("stateData",this.state.stateData)
         if (!this.state.stateData) {
             return <div className={"data-loading"}> Loading Data...... </div>
         }
         let data = this.state.stateData
         let selectedState = this.state.selected;
-        let selectedData = data[selectedState]["districtData"];
+        console.log("selected state",selectedState);
+        let selectedData = data[selectedState]["districts"];
+        console.log("SelectedData",selectedData);
         let allStateNames = Object.keys(this.state.stateData)
 
 

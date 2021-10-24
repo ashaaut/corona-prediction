@@ -33,6 +33,7 @@ export default class GenderChart extends PureComponent {
     render() {
         const data = this.props
         let rawData = data["data"]["raw_data"]
+        console.log("genderData",rawData);
         let males = this.filterData(rawData, "gender", "M")
         let females = this.filterData(rawData, "gender", "F");
         let unknownData = this.filterData(rawData, "gender", "");

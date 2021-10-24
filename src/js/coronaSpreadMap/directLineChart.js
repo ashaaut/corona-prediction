@@ -10,9 +10,7 @@ export default class lineChart extends Component {
 
 	render() {
 		let { data } = this.props;
-		console.log(data);
 		let dates = data.map((e) => e['dateymd']);
-		console.log('dates', dates);
 		let dailyConfirmed = data.map((e) => e['dailyconfirmed']);
 		let dailyRecovered = data.map((e) => e['dailyrecovered']);
 		let dailyDeceased = data.map((e) => e['dailydeceased']);

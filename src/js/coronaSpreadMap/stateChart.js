@@ -11,15 +11,16 @@ export default class StateChart extends PureComponent {
     render() {
         const { data } = this.props;
         let unknown = 0;
+        console.log(data)
 
         if (data["stateData"]["Unknown"]) {
             unknown = data["stateData"]["Unknown"]["confirmed"]
         }
         let districtNames = Object.keys(data["stateData"])
-        let confirmed = districtNames.map(districtName => data["stateData"][districtName]["confirmed"])
-        let active = districtNames.map(districtName => data["stateData"][districtName]["active"])
-        let recovered = districtNames.map(districtName => data["stateData"][districtName]["recovered"])
-        let deaths = districtNames.map(districtName => data["stateData"][districtName]["deceased"])
+        let confirmed = districtNames.map(districtName => data["stateData"][districtName]["total"]["confirmed"])
+        let active = districtNames.map(districtName => data["stateData"][districtName]["total"]["active"])
+        let recovered = districtNames.map(districtName => data["stateData"][districtName]["total"]["recovered"])
+        let deaths = districtNames.map(districtName => data["stateData"][districtName]["total"]["deceased"])
 
         let index = districtNames.indexOf("Unknown")
         if (index > 0) {

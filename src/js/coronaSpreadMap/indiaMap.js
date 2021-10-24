@@ -15,12 +15,13 @@ class IndiaMap extends Component {
   }
 
   onMouseEnter(geo, current) {
-
     this.setState({
       geoStateData: `${geo.properties.name},
         Confirmed:${current[0]['confirmed']},
         Recovered: ${current[0]["recovered"]},
-        Deaths:${current[0]["deaths"]} `
+        Deaths:${current[0]["deaths"]} ,
+        LastUpdated:${current[0]["lastupdatedtime"]} `
+        
     });
   };
 

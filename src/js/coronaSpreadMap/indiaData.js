@@ -15,7 +15,7 @@ export default class IndiaData extends PureComponent {
     }
 
     componentWillMount() {
-        fetch('https://api.covid19india.org/data.json', {
+        fetch('https://data.covid19india.org/data.json', {
             cors: 'no-cors',
             method: 'GET',
             redirect: 'follow',
@@ -37,6 +37,7 @@ export default class IndiaData extends PureComponent {
         const data = this.state.stateAndStatusData;
         let stateData = data['statewise'];
         let total = stateData["0"]
+        console.log("india",data);
         return (
             <div className={"specific-chart-container"}>
                 <div className={"main-title"}> India Overview</div>
